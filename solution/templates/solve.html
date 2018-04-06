@@ -23,9 +23,13 @@
         <ul class="section-list">
           {% for section in sections %}
             <li class="sect"><h3 class="sec-title">{{ section.title }}</h3></li>
-            <li class="sect"><p class="sect-description">{{ section.description }}</p></li>
+            <li class="sect"><p class="sect-description">{{ section.description|linebreaks }}</p></li>
           {% endfor %}
         </ul>
     </div>
+  </div>
+  <div class="comments">
+    {% for comment in comments %}
+    {% endfor %}
   </div>
 </body>

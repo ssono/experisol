@@ -15,4 +15,4 @@ def intro(request):
 def post(request):
     modules = Module.objects.all()
     current_module = Module.objects.get(title="Table of Contents")
-    return render(request, 'solve.html', {'modules': modules, 'sections': current_module.section_set.all()})
+    return render(request, 'solve.html', {'modules': modules, 'sections': current_module.section_set.all(), 'comments': current_module.comment_set.all(),})

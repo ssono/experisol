@@ -4,6 +4,9 @@ body {
   font-family: 'Raleway', sans-serif;
 }
 
+p {
+  margin: 1% 2%;
+}
 .announce-bar{
 
 }
@@ -64,4 +67,7 @@ body {
 
 .section-list {
   list-style-type: none;
+}
+
+.sect-description {
 }
