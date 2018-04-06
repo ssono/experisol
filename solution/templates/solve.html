@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <link href="https://fonts.googleapis.com/css?family=Poiret+One|Raleway" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="/static/css/solve.css"></link>
+  <title>Solvent</title>
+</head>
+<body>
+  <div class="announce-bar">
+    <h1 id="logo">Solvent</h1><p id="contact">Talk to me at bla@email.com</p>
+  </div>
+  <div class="post-content">
+    <div class="module-bar">
+      <ul class="modules">
+        {% for module in modules %}
+          <li class="module-li"><h2 class="module-titles">{{ module.title }}</h2></li>
+        {% endfor %}
+      </ul>
+    </div>
+      <div class="sections">
+        <ul class="section-list">
+          {% for section in sections %}
+            <li class="sect"><h3 class="sec-title">{{ section.title }}</h3></li>
+            <li class="sect"><p class="sect-description">{{ section.description }}</p></li>
+          {% endfor %}
+        </ul>
+    </div>
+  </div>
+</body>

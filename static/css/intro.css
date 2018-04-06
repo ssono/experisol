@@ -1,4 +1,17 @@
-.top {
+
+h1{
+  font-family: 'Poiret One'
+}
+
+body {
+  margin-top: 0px;
+  margin-left: 0px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+  font-family: 'Raleway';
+}
+
+#top {
   background-color: rgb(80, 204, 127);
   padding: 100px;
   margin: 0px;
@@ -11,19 +24,20 @@
   -webkit-margin-before: 0em;
 }
 
-.explanation {
-  padding: 150px 100px;
+#explanation {
+  padding: 5%;
   background-color: white;
+  display: flex;
 }
 
-.left-explanation{
+#left-explanation{
   width: 40%;
   display: inline-block;
-  font-size: 2em;
-  text-align: right;
+  font-size: 3em;
+  text-align: center;
 }
 
-.right-explanation{
+#right-explanation{
   width: 58%;
   float: right;
   border-left: 7px solid rgb(80, 204, 127);
@@ -35,67 +49,69 @@
   margin-top: 0em;
   margin-bottom: 0em;
   margin-left: 1%;
-  font-size: 1.3em;
+  font-size: 1.5em;
   margin-right: .5%;
 }
 
-.problem {
-  padding: 150px 100px;
+#problem {
+  padding: 5%;
   background-color: rgb(230, 240, 250);
+  display: flex;
 }
 
-.left-problem{
+#left-problem{
   width: 60%;
   display:inline-block;
   text-align: justify;
   border-left: 7px solid rgb(80, 204, 127);
-  /*background-color: rgb(204, 243, 230);*/
 }
 
 #prob-text{
   margin-left: 1%;
-  font-size: 1.3em;
+  font-size: 1.5em;
   margin-right: .5%;
   margin-top: 0em;
   margin-bottom: 0em;
 }
 
-.right-problem{
+#right-problem{
   width: 38%;
   float: right;
-  font-size: 2em;
+  font-size: 3em;
 }
 
-.rules {
-  padding: 150px 100px;
+#rules {
+  padding: 5%;
   background-color: rgb(190, 210, 220);
+  display: flex;
 }
 
-.left-rules{
+#left-rules{
   width: 40%;
   display: inline-block;
-  font-size: 2em;
-  text-align: right;
+  font-size: 3em;
+  text-align: center;
 }
 
-.right-rules{
+#right-rules{
   width: 58%;
   float: right;
   border-left: 7px solid rgb(80, 204, 127);
-  /*background-color: rgb(204, 243, 230);*/
   text-align: justify;
+
 }
 
 #rule-text{
   margin-left: 1%;
-  font-size: 1.3em;
+  font-size: 1.5em;
   margin-right: .5%;
   margin-top: 0em;
   margin-bottom: 0em;
 }
 
-.enter-container{
+#enter-container{
   text-align: center;
+  float: center;
   background-color: rgb(5, 55, 75);
 }
 
@@ -103,16 +119,8 @@
   margin: 5%;
   border: 3px solid rgb(80, 204, 127);
   text-decoration: none;
-  padding: 1% 4%;
+  padding: 2% 6%;
   color: rgb(80, 204, 127);
   background-color: rgb(5, 55, 75);
   font-size: 1.3em;
-}
-
-body {
-  margin-top: 0px;
-  margin-left: 0px;
-  margin-right: 0px;
-  margin-bottom: 0px;
-  font-family: Helvetica;
 }

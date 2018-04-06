@@ -1,0 +1,67 @@
+body {
+  margin: 0%;
+  background-color: rgb(5, 55, 75);
+  font-family: 'Raleway', sans-serif;
+}
+
+.announce-bar{
+
+}
+
+#logo{
+  color: rgb(80, 204, 127);
+  text-align: left;
+  display: inline-block;
+  padding: 0px;
+  margin: 1% 1% 1% 2%;
+  font-size: 5em;
+  font-family: 'Poiret One', sans-serif;
+}
+
+#contact {
+  color: rgb(130, 130, 150);
+  float: right;
+  padding: 0px;
+  margin: 1%;
+}
+
+.post-content {
+  margin: 0% 5% 5% 2%;
+  background-color: white;
+
+}
+
+.module-bar {
+  background-color: rgb(80, 204, 127);
+  color: black;
+}
+
+.modules {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  overflow: hidden;
+}
+
+.module-li {
+  float: left;
+  border-style: solid;
+  border-width: 0px 2px 0px 0px;
+  border-color: white;
+  background-color: rgb(80, 204, 127);
+}
+
+.module-titles {
+    display: block;
+    text-align: center;
+    padding: 0em 1em;
+    text-decoration: none;
+}
+
+.sections {
+  padding-bottom:1%;
+}
+
+.section-list {
+  list-style-type: none;
+}

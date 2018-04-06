@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, Http404, HttpResponseRedirect, FileResponse
-from django.contrib.auth.decorators import login_required
+from solution.models import Section, Module, Comment
 
 
 
@@ -13,4 +13,6 @@ def intro(request):
 
 
 def post(request):
-    return HttpResponse("post")
+    modules = Module.objects.all()
+    current_module = Module.objects.get(title="Table of Contents")
+    return render(request, 'solve.html', {'modules': modules, 'sections': current_module.section_set.all()})
