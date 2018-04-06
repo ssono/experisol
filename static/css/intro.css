@@ -78,6 +78,7 @@ body {
   width: 38%;
   float: right;
   font-size: 3em;
+  text-align: right;
 }
 
 #rules {

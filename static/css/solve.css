@@ -13,7 +13,7 @@ body {
   text-align: left;
   display: inline-block;
   padding: 0px;
-  margin: 1% 1% 1% 2%;
+  margin: 1% 1% 1% 5%;
   font-size: 5em;
   font-family: 'Poiret One', sans-serif;
 }
@@ -26,7 +26,7 @@ body {
 }
 
 .post-content {
-  margin: 0% 5% 5% 2%;
+  margin: 0% 5% 5% 5%;
   background-color: white;
 
 }
