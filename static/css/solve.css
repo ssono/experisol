@@ -1,21 +1,27 @@
 body {
   margin: 0%;
-  /* background-color: rgb(5, 55, 75); */
-  background-color: white;
+  background-color: rgb(230,240,240) !important;
   font-family: 'Raleway', sans-serif;
 }
 
+
 p {
-  margin: 1% 2%;
+  margin: 1% 2% !important;
   font-size: 1.5em;
 }
 
-h3 {
-  font-size: 2em;
+hr{
+  border-top: 1px solid rgb(0,30,50) !important;
+  margin: 0% 1%;
+
+}
+
+.glyphicon-star-empty {
+  margin-left: 1%;
 }
 
 .announce-bar{
-
+  background-color: rgb(0,30,50);
 }
 
 #logo{
@@ -23,7 +29,7 @@ h3 {
   text-align: left;
   display: inline-block;
   padding: 0px;
-  margin: 1% 1% 1% 5%;
+  margin: 1% 1% 1% 1%;
   font-size: 5em;
   font-family: 'Poiret One', sans-serif;
 }
@@ -36,23 +42,27 @@ h3 {
 }
 
 #frame{
-  margin: 0% 15% 0% 5%;
-  padding: 2% 0% 0% 0%;
+  margin: 1% 1% 0% 1%;
+  padding: 1% 0% 1% 0%;
   color: rgb(80,204,127);
-  background-color: rgb(5,55,75);
-  border-radius: 10px;
+  background-color: rgb(0,30,50);
+  display: inline-block;
+  width: 77%;
 }
 
 #post-title{
-  margin: 2% 5%;
+  margin: 1% 5% 1% 1%;
+  display: inline-block;
+}
+
+#post-author{
+  margin: 0% 5% 1% 1%;
 }
 
 .post-content {
-  margin: 0% 5% 2% 5%;
+  margin: 0% 1% 2% 1%;
   background-color: white;
   border-radius: 10px;
-
-
 }
 
 .module-bar {
@@ -95,19 +105,65 @@ h3 {
   list-style-type: none;
 }
 
+.sec-title{
+  font-weight: bold;
+  font-size: 2em;
+}
+
 .sect-description {
 }
 
+.post-data{
+  margin: 2% 5%;
+}
+
+.trending{
+  width:20%;
+  margin: 1% 1% 1% 0%;
+  background-color: white;
+  display: inline-block;
+  float:right;
+}
+.trend-select{
+  padding: 1%;
+  background-color: rgb(80, 204, 127);
+}
+#display-title{
+  margin:1%;
+  color: rgb(0,30,50);
+  background-color: rgb(80, 204, 127);
+}
+.subname{
+  font-size: 1.5em;
+  text-decoration: underline;
+  margin:1%;
+}
+
+.subdata{
+  font-size: 1em;
+  margin:1%;
+}
+
 .comments {
-  margin: 1% 22% 1% 10%;
+  margin: 1%;
   background-color: inherit;
   font-size: .75em;
+  width: 77%;
 }
 
 .comm {
-  margin: 1% 2% 1% 0%;
-  background-color: rgb(230, 240, 250);
+  margin: 1% 0% 1% 0%;
+  background-color: white;
   padding: 1%;
   border-left: 7px solid rgb(80, 204, 127);
   font-size: inherit;
+}
+
+.comment-points{
+  display: inline-block;
+}
+
+.reply{
+  display: inline-block;
+  float: right;
 }

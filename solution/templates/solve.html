@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <link rel="stylesheet" type="text/css" href="/static/css/solve.css"></link>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <title>Solvent</title>
 </head>
 <body>
@@ -13,6 +16,7 @@
   </div>
   <div id="frame">
     <h1 id="post-title">Solvent: Collaborative Brainstorming</h1>
+    <p id="post-author">By: ssono</p>
     <div class="post-content">
       <div class="module-bar">
         <ul class="modules">
@@ -30,13 +34,63 @@
           </ul>
       </div>
     </div>
-    <hr id="break">
+    <!--<hr id="break">!-->
+    <div class="post-data">
+      <p>
+        <span class="glyphicon glyphicon-menu-up"></span>
+        1234
+        <span class="glyphicon glyphicon-menu-down"></span>
+        <span class="glyphicon glyphicon-star-empty"></span>
+      </p>
+    </div>
+  </div>
+  <div class="trending">
+    <div class="trend-select">
+      <h1 id="display-title">
+        Trending
+        <span class="glyphicon glyphicon-triangle-bottom"></span>
+      </h1>
+    </div>
+    <p class="subname">A novel strategy for managing large groups<p>
+    <p class="subdata">By: Someguy</p>
+    <p class="subdata">587 Points | 04/22/18</p>
+    <hr>
+
+    <p class="subname">A novel strategy for managing large groups<p>
+    <p class="subdata">By: Someguy</p>
+    <p class="subdata">587 Points | 04/22/18</p>
+    <hr>
+
+    <p class="subname">A novel strategy for managing large groups<p>
+    <p class="subdata">By: Someguy</p>
+    <p class="subdata">587 Points | 04/22/18</p>
+    <hr>
+
+    <p class="subname">A novel strategy for managing large groups<p>
+    <p class="subdata">By: Someguy</p>
+    <p class="subdata">587 Points | 04/22/18</p>
+    <hr>
+
+    <p class="subname">A novel strategy for managing large groups<p>
+    <p class="subdata">By: Someguy</p>
+    <p class="subdata">587 Points | 04/22/18</p>
+    <hr>
+
+    <p class="subname">A novel strategy for managing large groups<p>
+    <p class="subdata">By: Someguy</p>
+    <p class="subdata">587 Points | 04/22/18</p>
+  
   </div>
   <div class="comments">
     {% for comment in comments %}
       <div class="comm">
         <p class="comment-text">{{ comment.content }}</p>
-        <p class="comment-points">Points: {{ comment.points }}</p>
+        <p class="comment-points">
+          <span class="glyphicon glyphicon-menu-up"></span>
+          {{ comment.points }}
+          <span class="glyphicon glyphicon-menu-down"></span>
+        </p>
+        <p class="reply">Reply <span class="glyphicon glyphicon-share-alt"></span></p>
       </div>
     {% endfor %}
   </div>
