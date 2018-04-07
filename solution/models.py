@@ -20,7 +20,7 @@ class Module(models.Model):
 class Comment(models.Model):
     module = models.ForeignKey(Module, null=True, blank=True)
     par_comment = models.ForeignKey('self', null=True, blank=True)
-    point = models.IntegerField(default=0)
+    points = models.IntegerField(default=0)
     content = models.TextField()
 
     def __str__(self):
