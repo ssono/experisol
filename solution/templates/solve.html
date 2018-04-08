@@ -2,12 +2,15 @@
 <html lang="en">
 <head>
   <link href="https://fonts.googleapis.com/css?family=Poiret+One|Raleway" rel="stylesheet">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <link rel="stylesheet" type="text/css" href="/static/css/solve.css"></link>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="/static/css/solve.css"></link>
+  <script src="/static/js/solve.js"></script>
+
   <title>Solvent</title>
 </head>
 <body>
@@ -36,11 +39,11 @@
     </div>
     <!--<hr id="break">!-->
     <div class="post-data">
-      <p>
-        <span class="glyphicon glyphicon-menu-up"></span>
+      <p class="post-vote">
+        <span class="glyphicon glyphicon-menu-up post-up"></span>
         1234
-        <span class="glyphicon glyphicon-menu-down"></span>
-        <span class="glyphicon glyphicon-star-empty"></span>
+        <span class="glyphicon glyphicon-menu-down post-down"></span>
+        <span class="glyphicon glyphicon-star-empty post-fav"></span>
       </p>
     </div>
   </div>
@@ -79,16 +82,16 @@
     <p class="subname">A novel strategy for managing large groups<p>
     <p class="subdata">By: Someguy</p>
     <p class="subdata">587 Points | 04/22/18</p>
-  
+
   </div>
   <div class="comments">
     {% for comment in comments %}
       <div class="comm">
         <p class="comment-text">{{ comment.content }}</p>
         <p class="comment-points">
-          <span class="glyphicon glyphicon-menu-up"></span>
+          <span class="glyphicon glyphicon-menu-up comment-up"></span>
           {{ comment.points }}
-          <span class="glyphicon glyphicon-menu-down"></span>
+          <span class="glyphicon glyphicon-menu-down comment-down"></span>
         </p>
         <p class="reply">Reply <span class="glyphicon glyphicon-share-alt"></span></p>
       </div>
