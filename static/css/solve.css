@@ -20,7 +20,7 @@ hr{
   margin-left: 1%;
 }
 
-.announce-bar{
+.announce_bar{
   background-color: rgb(0,30,50);
 }
 
@@ -43,28 +43,28 @@ hr{
 
 #frame{
   margin: 1% 1% 0% 7%;
-  padding: 1% 0% 1% 0%;
+  padding: 0%;
   color: rgb(0,30,50);
   background-color: rgb(80,204,127);
   display: inline-block;
   width: 69%;
 }
 
-#post-title{
+#post_title{
   margin: 1% 5% 1% 1%;
   display: inline-block;
 }
 
-#post-author{
+#post_author{
   margin: 0% 5% 1% 1%;
 }
 
-.post-content {
-  margin: 0% 0% 2% 0%;
+.post_content {
+  margin: 0%;
   background-color: white;
 }
 
-.module-bar {
+.module_bar {
   background-color: rgb(0, 30, 50);
   color: black;
   border-top-left-radius: 10px;
@@ -78,17 +78,17 @@ hr{
   overflow: hidden;
 }
 
-.module-li {
+.module_li {
   float: left;
   color: rgb(80,204,127);
-  /* border-style: solid;
+  /* border_style: solid;
   border-width: 0px 2px 0px 0px;
   border-color: white; */
   width: calc(100%/6);
   background-color: rgb(0,30,50);
 }
 
-.module-titles {
+.module_titles {
     display: block;
     text-align: center;
     font-size: 150%;
@@ -102,23 +102,25 @@ hr{
   color:black;
 }
 
-.section-list {
+.section_list {
   list-style-type: none;
 }
 
-.sec-title{
+.sec_title{
   font-weight: bold;
   font-size: 2em;
 }
 
-.sect-description {
+.sect_description {
 }
 
-.post-data{
-  margin: 1%;
+.post_data{
+  padding: 1%;
+  color:rgb(80,204,127);
+  background-color: rgb(0,30,50);
 }
 
-.post-vote{
+.post_vote{
   margin: 0% !important;
 }
 
@@ -129,11 +131,11 @@ hr{
   display: inline-block;
   float:right;
 }
-.trend-select{
+.trend_select{
   padding: 1%;
   background-color: rgb(80, 204, 127);
 }
-#display-title{
+#display_title{
   margin:1%;
   color: rgb(0,30,50);
   background-color: rgb(80, 204, 127);
@@ -164,7 +166,7 @@ hr{
   font-size: inherit;
 }
 
-.comment-points{
+.comment_points{
   display: inline-block;
 }
 

@@ -7,6 +7,9 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
+  <link rel="shortcut icon" href="/static/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/static/favicon.ico" type="image/x-icon">
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" type="text/css" href="/static/css/solve.css"></link>
   <script src="/static/js/solve.js"></script>
@@ -14,42 +17,42 @@
   <title>Solvent</title>
 </head>
 <body>
-  <div class="announce-bar">
+  <div class="announce_bar">
     <h1 id="logo">Solvent</h1><p id="contact">Talk to me at bla@email.com</p>
   </div>
   <div id="frame">
-    <h1 id="post-title">Solvent: Collaborative Brainstorming</h1>
-    <p id="post-author">By: ssono</p>
-    <div class="post-content">
-      <div class="module-bar">
+    <h1 id="post_title">Solvent: Collaborative Brainstorming</h1>
+    <p id="post_author">By: ssono</p>
+    <div class="post_content">
+      <div class="module_bar">
         <ul class="modules">
           {% for module in modules %}
-            <li class="module-li"><h2 class="module-titles">{{ module.title }}</h2></li>
+            <li class="module_li"><h2 class="module_titles">{{ module.title }}</h2></li>
           {% endfor %}
         </ul>
       </div>
         <div class="sections">
-          <ul class="section-list">
+          <ul class="section_list">
             {% for section in sections %}
-              <li class="sect"><h3 class="sec-title">{{ section.title }}</h3></li>
-              <li class="sect"><p class="sect-description">{{ section.description|linebreaks }}</p></li>
+              <li class="sect"><h3 class="sec_title">{{ section.title }}</h3></li>
+              <li class="sect"><p class="sect_description">{{ section.description|linebreaks }}</p></li>
             {% endfor %}
           </ul>
       </div>
     </div>
     <!--<hr id="break">!-->
-    <div class="post-data">
-      <p class="post-vote">
-        <span class="glyphicon glyphicon-menu-up post-up"></span>
+    <div class="post_data">
+      <p class="post_vote">
+        <span class="glyphicon glyphicon-menu-up post_up"></span>
         1234
-        <span class="glyphicon glyphicon-menu-down post-down"></span>
-        <span class="glyphicon glyphicon-star-empty post-fav"></span>
+        <span class="glyphicon glyphicon-menu-down post_down"></span>
+        <span class="glyphicon glyphicon-star-empty post_fav"></span>
       </p>
     </div>
   </div>
   <div class="trending">
-    <div class="trend-select">
-      <h1 id="display-title">
+    <div class="trend_select">
+      <h1 id="display_title">
         Trending
         <span class="glyphicon glyphicon-triangle-bottom"></span>
       </h1>
@@ -86,14 +89,16 @@
   </div>
   <div class="comments">
     {% for comment in comments %}
-      <div class="comm">
-        <p class="comment-text">{{ comment.content }}</p>
-        <p class="comment-points">
-          <span class="glyphicon glyphicon-menu-up comment-up"></span>
+      <div class="comm" id="com_{{ comment.pk }}" pkid="{{ comment.pk }}">
+        <p class="comment_text">{{ comment.content }}</p>
+        <p class="comment_points">
+          <span class="glyphicon glyphicon-menu-up comment_up"></span>
           {{ comment.points }}
-          <span class="glyphicon glyphicon-menu-down comment-down"></span>
+          <span class="glyphicon glyphicon-menu-down comment_down"></span>
         </p>
         <p class="reply">Reply <span class="glyphicon glyphicon-share-alt"></span></p>
+      </div>
+      <div class="{{ comment.pk }}_child" parent="{{ comment.pk }}">
       </div>
     {% endfor %}
   </div>

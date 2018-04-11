@@ -1,11 +1,11 @@
 $(document).ready(function(){
-  $(".post-up, .post-down, .post-fav").hover(function(){
-    $(this).css("color", "rgb(80, 204, 127)");
+  $(".post_up, .post_down, .post_fav").hover(function(){
+    $(this).css("color", "rgb(80, 100, 220)");
   }, function(){
-    $(this).css("color", "rgb(140, 170, 180)");
+    $(this).css("color", "rgb(80, 204, 127)");
   });
 
-  $(".comment-up, .comment-down").hover(function(){
+  $(".comment_up, .comment_down").hover(function(){
     $(this).css("color", "rgb(80, 204, 127)");
   }, function(){
     $(this).css("color", "black");
