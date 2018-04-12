@@ -19,12 +19,12 @@ class Module(models.Model):
 
 class Comment(models.Model):
     module = models.ForeignKey(Module, null=True, blank=True)
-    par_comment = models.ForeignKey('self', null=True, blank=True)
+    par_comment = models.ForeignKey('self', null=True, blank=True, related_name="comkids")
     points = models.IntegerField(default=0)
     content = models.TextField()
 
     def __str__(self):
-        return self.module.title
+        return str(self.pk)
 
 class Section(models.Model):
     title = models.CharField(max_length=80)

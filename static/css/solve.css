@@ -174,3 +174,11 @@ hr{
   display: inline-block;
   float: right;
 }
+
+.child_li{
+  list-style-type: none;
+}
+
+.child_ul{
+  padding-left: 1%;
+}
