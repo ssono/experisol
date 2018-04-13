@@ -3,7 +3,7 @@
 <ul class="child_ul">
     {% for child in children %}
     <li class="child_li">
-      <div class="comm" id="com_{{ comment.pk }}" pkid="{{ comment.pk }}">
+      <div class="comm par{{ child.par_comment.pk }} hiding" id="com_{{ child.pk }}" pkid="{{ child.pk }}">
         <p class="comment_text">{{ child.content }}</p>
         <p class="comment_points">
           <span class="glyphicon glyphicon-menu-up comment_up"></span>

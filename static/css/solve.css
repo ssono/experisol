@@ -179,6 +179,10 @@ hr{
   list-style-type: none;
 }
 
+.hiding{
+  display: none;
+}
+
 .child_ul{
   padding-left: 1%;
 }
