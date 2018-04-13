@@ -17,7 +17,14 @@ def post(request):
     current_module = Module.objects.get(title="Table of Contents")
     return render(request, 'solve.html', {'modules': modules, 'sections': current_module.section_set.all(), 'comments': current_module.comment_set.all(),})
 
-"""@register.inclusion_tag('comChildren.html')
-def com_children_tag(comment):
-    children = comment.comkids.all
-    return {'children': children}"""
+def comment_upvote(request):
+    test= "test"
+    if request.method == 'POST' and request.is_ajax():
+        com_id = request.POST['com_id']
+        voting = Comment.objects.get(pk=com_id)
+        voting.points += 1
+        voting.save()
+        test = "wow"
+    modules = Module.objects.all()
+    current_module = Module.objects.get(title="Table of Contents")
+    return render(request, 'solve.html', {'modules': modules, 'sections': current_module.section_set.all(), 'comments': current_module.comment_set.all(),})

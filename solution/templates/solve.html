@@ -93,12 +93,13 @@
   <div class="comments">
     {% for comment in comments %}
       <div class="comm" id="com_{{ comment.pk }}" pkid="{{ comment.pk }}">
-        <p class="comment_text">{{ comment.content }}</p>
+        <p class="comment_text" pkid="{{ comment.pk }}">{{ comment.content }}</p>
         <div class="comment_points_wrap">
           <p class="comment_points">
-            <span class="glyphicon glyphicon-menu-up comment_up" ></span>
-            {{ comment.points }}
-            <span class="glyphicon glyphicon-menu-down comment_down"></span>
+            {% csrf_token %}
+            <span class="glyphicon glyphicon-menu-up comment_up" pkid="{{ comment.pk }}"></span>
+              <p>{{ comment.points }}</p>
+            <span class="glyphicon glyphicon-menu-down comment_down" pkid="{{ comment.pk }}"></span>
           </p>
         </div>
         <div class="expand_wrap">
@@ -117,4 +118,5 @@
       !-->
     {% endfor %}
   </div>
+  <h1>{{ test }}</h1>
 </body>

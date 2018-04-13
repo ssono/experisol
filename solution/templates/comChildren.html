@@ -4,12 +4,13 @@
     {% for child in children %}
     <li class="child_li">
       <div class="comm par{{ child.par_comment.pk }} hiding" id="com_{{ child.pk }}" pkid="{{ child.pk }}">
-        <p class="comment_text">{{ child.content }}</p>
+        <p class="comment_text" pkid="{{ comment.pk }}">{{ child.content }}</p>
         <div class="comment_points_wrap">
           <p class="comment_points">
-            <span class="glyphicon glyphicon-menu-up comment_up" ></span>
-            {{ child.points }}
-            <span class="glyphicon glyphicon-menu-down comment_down"></span>
+            {% csrf_token%}
+            <span class="glyphicon glyphicon-menu-up comment_up" pkid="{{ child.pk }}"></span>
+              {{ child.points }}
+            <span class="glyphicon glyphicon-menu-down comment_down" pkid="{{ child.pk }}"></span>
           </p>
         </div>
         <div class="expand_wrap">
