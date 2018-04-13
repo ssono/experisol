@@ -10,6 +10,9 @@
           {{ child.points }}
           <span class="glyphicon glyphicon-menu-down comment_down"></span>
         </p>
+        {% if child.comkids.count > 0 %}
+            <p class="expandable">Expand</p>
+        {% endif %}
         <p class="reply">Reply <span class="glyphicon glyphicon-share-alt"></span></p>
       </div>
     </li>

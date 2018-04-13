@@ -169,7 +169,24 @@ hr{
 .comment_points{
   display: inline-block;
 }
+.comment_points_wrap{
+  width: 33%;
+  display: inline-block;
+}
 
+.expandable{
+  text-align: center;
+  color:rgb(70,80,100);
+}
+.expand_wrap{
+  width: 33%;
+  display: inline-block;
+}
+
+.reply_wrap{
+  width: 33%;
+  display: inline-block;
+}
 .reply{
   display: inline-block;
   float: right;

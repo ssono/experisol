@@ -94,12 +94,21 @@
     {% for comment in comments %}
       <div class="comm" id="com_{{ comment.pk }}" pkid={{ comment.pk }}>
         <p class="comment_text">{{ comment.content }}</p>
-        <p class="comment_points">
-          <span class="glyphicon glyphicon-menu-up comment_up"></span>
-          {{ comment.points }}
-          <span class="glyphicon glyphicon-menu-down comment_down"></span>
-        </p>
-        <p class="reply">Reply <span class="glyphicon glyphicon-share-alt"></span></p>
+        <div class="comment_points_wrap">
+          <p class="comment_points">
+            <span class="glyphicon glyphicon-menu-up comment_up"></span>
+            {{ comment.points }}
+            <span class="glyphicon glyphicon-menu-down comment_down"></span>
+          </p>
+        </div>
+        <div class="expand_wrap">
+        {% if comment.comkids.count > 0 %}
+            <p class="expandable">replies</p>
+        {% endif %}
+        </div>
+        <div class="reply_wrap">
+          <p class="reply">reply <span class="glyphicon glyphicon-share-alt"></span></p>
+        </div>
       </div>
       {% com_children_tag comment %}
       <!--
