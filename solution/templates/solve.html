@@ -98,7 +98,7 @@
           <p class="comment_points">
             {% csrf_token %}
             <span class="glyphicon glyphicon-menu-up comment_up" pkid="{{ comment.pk }}"></span>
-              <p>{{ comment.points }}</p>
+              {{ comment.points }}
             <span class="glyphicon glyphicon-menu-down comment_down" pkid="{{ comment.pk }}"></span>
           </p>
         </div>
