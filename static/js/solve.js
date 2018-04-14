@@ -46,7 +46,7 @@ $(document).ready(function(){
   $(".comment_up").click(function(){
     var com_id = $(this).attr("pkid");
     var weight = 1;
-    vote(com_id, weight);
+    comvote(com_id, weight);
   });
 
   $(".comment_down").click(function(){

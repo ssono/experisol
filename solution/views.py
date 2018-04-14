@@ -4,7 +4,7 @@ from __future__ import unicode_literals
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, Http404, HttpResponseRedirect, FileResponse, JsonResponse
 from solution.models import Section, Module, Comment
-import json
+
 
 
 
@@ -30,17 +30,3 @@ def comment_vote(request):
         newdata["points"] = voting.points
         return JsonResponse(newdata)
     return HttpResponse("Please return to the main site or I will be forced to warn you a second time!")
-
-
-"""
-def comment_upvote(request):
-    if request.method == 'POST' and request.is_ajax():
-        com_id = request.POST['com_id']
-        voting = Comment.objects.get(pk=com_id)
-        voting.points += 1
-        voting.save()
-        newdata = {}
-        newdata["points"] = voting.points
-        return JsonResponse(newdata)
-    return HttpResponse("Please return to the main site or I will be forced to warn you a second time!")
-"""
