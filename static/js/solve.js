@@ -50,9 +50,10 @@ $(document).ready(function(){
       url: "/com_up/",
       data: {
           'com_id': com_id
-      },
-      success: function(){
-        $(".com_"+String(com_id)).load('/solution/');
+      }, dataType: "json",
+      success: function(data){
+        console.log(data['points'])
+        $("#compoints_"+com_id).text(data["points"]);
       }
     });
   });

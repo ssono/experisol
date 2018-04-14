@@ -7,9 +7,11 @@
         <p class="comment_text" pkid="{{ comment.pk }}">{{ child.content }}</p>
         <div class="comment_points_wrap">
           <p class="comment_points">
-            {% csrf_token%}
+            {% csrf_token %}
             <span class="glyphicon glyphicon-menu-up comment_up" pkid="{{ child.pk }}"></span>
-              {{ child.points }}
+          </p>
+          <p class="comment_points" id="compoints_{{ child.pk }}">{{ child.points }}</p>
+          <p class="comment_points">
             <span class="glyphicon glyphicon-menu-down comment_down" pkid="{{ child.pk }}"></span>
           </p>
         </div>
