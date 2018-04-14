@@ -45,20 +45,32 @@ $(document).ready(function(){
 
   $(".comment_up").click(function(){
     var com_id = $(this).attr("pkid");
-    $.ajax({
-      type: "POST",
-      url: "/com_up/",
-      data: {
-          'com_id': com_id
-      }, dataType: "json",
-      success: function(data){
-        console.log(data['points'])
-        $("#compoints_"+com_id).text(data["points"]);
-      }
-    });
+    var weight = 1;
+    vote(com_id, weight);
+  });
+
+  $(".comment_down").click(function(){
+    var com_id = $(this).attr("pkid");
+    var weight = -1;
+    vote(com_id, weight);
   });
 });
 
 function comToggle(parid) {
   $(".par"+parid).toggle();
+}
+
+//vote weight determines up/down and by how much
+function vote(com_id, weight){
+  $.ajax({
+    type: "POST",
+    url: "/com_vote/",
+    data: {
+        'com_id': com_id,
+        'weight': weight,
+    }, dataType: "json",
+    success: function(data){
+      $("#compoints_"+com_id).text(data["points"]);
+    }
+  });
 }

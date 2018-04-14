@@ -21,5 +21,5 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', views.intro),
     url(r'^solution/$', views.post),
-    url(r'^com_up/$', views.comment_upvote),
+    url(r'^com_vote/$', views.comment_vote),
 ]
