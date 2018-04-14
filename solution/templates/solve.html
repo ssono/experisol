@@ -104,7 +104,7 @@
             <span class="glyphicon glyphicon-menu-down comment_down" pkid="{{ comment.pk }}"></span>
           </p>
         </div>
-        <div class="expand_wrap">
+        <div class="expand_wrap" pkid="{{ comment.pk }}">
         {% if comment.comkids.count > 0 %}
             <p class="expandable">replies</p>
         {% endif %}

@@ -23,6 +23,9 @@ class Comment(models.Model):
     points = models.IntegerField(default=0)
     content = models.TextField()
 
+    class Meta:
+        ordering = ['-points']
+
     def __str__(self):
         return str(self.pk)
 

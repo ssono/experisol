@@ -38,7 +38,7 @@ $(document).ready(function(){
     $(this).css("color", "black");
   });
 
-  $(".comment_text").click(function(){
+  $(".comment_text, .expand_wrap").click(function(){
     var id = $(this).attr("pkid");
     comToggle(id);
   });
@@ -52,7 +52,7 @@ $(document).ready(function(){
   $(".comment_down").click(function(){
     var com_id = $(this).attr("pkid");
     var weight = -1;
-    vote(com_id, weight);
+    comvote(com_id, weight);
   });
 });
 
@@ -61,7 +61,7 @@ function comToggle(parid) {
 }
 
 //vote weight determines up/down and by how much
-function vote(com_id, weight){
+function comvote(com_id, weight){
   $.ajax({
     type: "POST",
     url: "/com_vote/",
