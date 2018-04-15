@@ -71,6 +71,15 @@ $(document).ready(function(){
     create_comment();
   });
 
+  $("#com_load").on("submit", ".reply_form", function(event){
+    event.preventDefault();
+    var id = $(this).attr("com_par");
+    handlersOff();
+    console.log("new rep");
+    create_reply(id);
+  });
+
+
 });
 
 $(document).ajaxStop(function() {
@@ -110,19 +119,35 @@ $(document).ajaxStop(function() {
     });
   }
 
-  function create_comment(){
-    $.ajax({
-      type: "POST",
-      url: "/create_comment/",
-      data: {
-        'text': $("#comment_area").val(),
-        'parent_mod': $("#comment_form").attr("module"),
-      },
-      success: function(){
-        $("#com_load").load("/solution/ .comments");
-      }
-    });
-  }
+function create_comment(){
+  $.ajax({
+    type: "POST",
+    url: "/create_comment/",
+    data: {
+      'text': $("#comment_area").val(),
+      'parent_mod': $("#comment_form").attr("module"),
+    },
+    success: function(){
+      $("#com_load").load("/solution/ .comments");
+    }
+  });
+}
+
+function create_reply(id){
+  $.ajax({
+    type: "POST",
+    url: "/create_reply/",
+    data: {
+      'text': $("#reply_area" + id).val(),
+      'parent_com': id,
+    },
+    success: function(){
+      $("#com_load").load("/solution/ .comments");
+    }
+  });
+}
+
+
 
   function handlersOff(){
     $(".comment_down, .comment_up").off("click");

@@ -39,7 +39,6 @@ def comment_vote(request):
     return HttpResponse("Please return to the main site or I will be forced to warn you a second time!")
 
 def create_comment(request):
-
     if request.method =='POST' and request.is_ajax():
         text = str(request.POST['text'])
         if text != "":
@@ -51,5 +50,20 @@ def create_comment(request):
                 points=0
             )
             new_com.save()
+        return render(request, 'solve.html', {})
+    return HttpResponse("Weird")
+
+def create_reply(request):
+    if request.method =='POST' and request.is_ajax():
+        text = str(request.POST['text'])
+        if text != "":
+            new_com_id = int(request.POST['parent_com'])
+            new_com = Comment.objects.get(pk=new_com_id)
+            new_reply = Comment.objects.create(
+                content=text,
+                par_comment=new_com,
+                points=0
+            )
+            new_reply.save()
         return render(request, 'solve.html', {})
     return HttpResponse("Weird")

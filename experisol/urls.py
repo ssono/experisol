@@ -23,4 +23,5 @@ urlpatterns = [
     url(r'^solution/$', views.post),
     url(r'^com_vote/$', views.comment_vote),
     url(r'^create_comment/$', views.create_comment),
+    url(r'^create_reply/$', views.create_reply),
 ]

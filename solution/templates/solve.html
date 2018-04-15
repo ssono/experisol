@@ -126,7 +126,7 @@
 
         <div class="reply_toggle hiding" id="reply_{{ comment.pk }}">
           <form method="POST" action="/solution/" class="reply_form" com_par="{{ comment.pk }}">
-            <textarea name="new_reply" class="reply_area" placeholder="What you got?"></textarea>
+            <textarea name="new_reply" class="reply_area" id="reply_area{{ comment.pk }}" placeholder="What you got?"></textarea>
             <input type="submit" value="Reply" class="reply_submit">
             {% csrf_token %}
           </form>
