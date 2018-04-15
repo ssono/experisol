@@ -33,36 +33,41 @@ $(document).ready(function(){
   });
 
   $(".comment_up, .comment_down").hover(function(){
-    // console.log("hover");
+    console.log("hover");
     $(this).css("color", "rgb(80, 204, 127)");
   }, function(){
     $(this).css("color", "black");
   });
 
-  $(document).on("click", ".comment_text, .expand_wrap", function(){
-    // console.log("toggle")
+  $("#com_load").on("click", ".comment_text, .expand_wrap", function(){
+    console.log("toggle")
     var id = $(this).attr("pkid");
     comToggle(id);
   });
 
-  $(document).on("click", ".comment_up", function(){
+  $("#com_load").on("click", ".reply_wrap", function(){
+    var id = $(this).attr("pkid");
+    replyToggle(id);
+  });
+
+  $("#com_load").on("click", ".comment_up", function(){
     var com_id = $(this).attr("pkid");
     handlersOff();
-    // console.log("up");
+    console.log("up");
     comvote(com_id, 1);
   });
 
-  $(document).on("click", ".comment_down", function(){
+  $("#com_load").on("click", ".comment_down", function(){
     var com_id = $(this).attr("pkid");
     handlersOff();
-    // console.log("down");
+    console.log("down");
     comvote(com_id, -1);
   });
 
-  $(document).on("submit", "#comment_form", function(event){
+  $("#com_load").on("submit", "#comment_form", function(event){
     event.preventDefault();
     handlersOff();
-    // console.log("new com");
+    console.log("new com");
     create_comment();
   });
 
@@ -71,7 +76,7 @@ $(document).ready(function(){
 $(document).ajaxStop(function() {
 
     $(".comment_up, .comment_down").hover(function(){
-      // console.log("hover");
+      console.log("hover");
       $(this).css("color", "rgb(80, 204, 127)");
     }, function(){
       $(this).css("color", "black");
@@ -80,8 +85,13 @@ $(document).ajaxStop(function() {
 
 
   function comToggle(parid) {
-    // console.log("toggling")
+    console.log("comtog");
     $(".par"+parid).toggle();
+  }
+
+  function replyToggle(comid) {
+    console.log("reptog");
+    $("#reply_"+comid).toggle();
   }
 
   //vote weight determines up/down and by how much
@@ -94,7 +104,7 @@ $(document).ajaxStop(function() {
           'weight': weight,
       }, dataType: "json",
       success: function(data){
-        // console.log(data["points"])
+        console.log(data["points"])
         $("#compoints_"+com_id).text(data["points"]);
       }
     });
@@ -115,8 +125,9 @@ $(document).ajaxStop(function() {
   }
 
   function handlersOff(){
-    $(".comment_down, .comment_up").off("click")
+    $(".comment_down, .comment_up").off("click");
     $(".comment_text, .expand_wrap").off("click");
+    $(".reply_wrap").off("click");
     $("#comment_form").off("submit");
     $(".comment_up, .comment_down").off("mouseenter mouseleave");
   }

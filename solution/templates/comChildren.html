@@ -5,6 +5,7 @@
     <li class="child_li">
       <div class="comm par{{ child.par_comment.pk }} hiding" id="com_{{ child.pk }}" pkid="{{ child.pk }}">
         <p class="comment_text" pkid="{{ child.pk }}">{{ child.content }}</p>
+
         <div class="comment_points_wrap">
           <p class="comment_points">
             {% csrf_token %}
@@ -15,16 +16,27 @@
             <span class="glyphicon glyphicon-menu-down comment_down" pkid="{{ child.pk }}"></span>
           </p>
         </div>
+
         <div class="expand_wrap" pkid="{{ child.pk }}">
           {% if child.comkids.count > 0 %}
               <p class="expandable">replies</p>
           {% endif %}
         </div>
-        <div class="reply_wrap">
+
+        <div class="reply_wrap" pkid="{{ child.pk }}">
           <p class="reply">Reply <span class="glyphicon glyphicon-share-alt"></span></p>
         </div>
       </div>
     </li>
+
+    <div class="reply_toggle hiding" id="reply_{{ child.pk }}">
+      <form method="POST" action="/solution/" class="reply_form" com_par="{{ child.pk }}">
+        <textarea name="new_reply" class="reply_area" placeholder="What you got?"></textarea>
+        <input type="submit" value="Reply" class="reply_submit">
+        {% csrf_token %}
+      </form>
+    </div>
+
       {% if child.comkids.count > 0 %}
           {% com_children_tag child%}
       {% endif %}
