@@ -7,7 +7,7 @@ class SectionAdmin(admin.ModelAdmin):
     list_display = ('title', 'module')
 
 class CommentAdmin(admin.ModelAdmin):
-    list_display = ('pk', 'points', 'content')
+    list_display = ('pk', 'points','module', 'par_comment' 'content')
 # Register your models here.
 admin.site.register(Module)
 admin.site.register(Comment, CommentAdmin)

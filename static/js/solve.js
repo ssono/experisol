@@ -33,14 +33,14 @@ $(document).ready(function(){
   });
 
   $(".comment_up, .comment_down").hover(function(){
-    console.log("hover");
+    // console.log("hover");
     $(this).css("color", "rgb(80, 204, 127)");
   }, function(){
     $(this).css("color", "black");
   });
 
   $(document).on("click", ".comment_text, .expand_wrap", function(){
-    console.log("toggle")
+    // console.log("toggle")
     var id = $(this).attr("pkid");
     comToggle(id);
   });
@@ -48,75 +48,75 @@ $(document).ready(function(){
   $(document).on("click", ".comment_up", function(){
     var com_id = $(this).attr("pkid");
     handlersOff();
-    console.log("up");
+    // console.log("up");
     comvote(com_id, 1);
   });
 
   $(document).on("click", ".comment_down", function(){
     var com_id = $(this).attr("pkid");
     handlersOff();
-    console.log("down");
+    // console.log("down");
     comvote(com_id, -1);
   });
 
   $(document).on("submit", "#comment_form", function(event){
     event.preventDefault();
     handlersOff();
-    console.log("new com");
+    // console.log("new com");
     create_comment();
   });
 
 });
 
-function comToggle(parid) {
-  console.log("toggling")
-  $(".par"+parid).toggle();
-}
-
-//vote weight determines up/down and by how much
-function comvote(com_id, weight){
-  $.ajax({
-    type: "POST",
-    url: "/com_vote/",
-    data: {
-        'com_id': com_id,
-        'weight': weight,
-    }, dataType: "json",
-    success: function(data){
-      console.log(data["points"])
-      $("#compoints_"+com_id).text(data["points"]);
-    }
-  });
-}
-
-function create_comment(){
-  $.ajax({
-    type: "POST",
-    url: "/create_comment/",
-    data: {
-      'text': $("#comment_area").val(),
-      'parent_mod': $("#comment_form").attr("module"),
-    },
-    success: function(){
-      $("#com_load").load("/solution/ .comments");
-    }
-  });
-}
-
-function handlersOff(){
-  $(".comment_down, .comment_up").off("click")
-  $(".comment_text, .expand_wrap").off("click");
-  $("#comment_form").off("submit");
-  $(".comment_up, .comment_down").off("mouseenter mouseleave");
-}
-
 $(document).ajaxStop(function() {
 
-
     $(".comment_up, .comment_down").hover(function(){
-      console.log("hover");
+      // console.log("hover");
       $(this).css("color", "rgb(80, 204, 127)");
     }, function(){
       $(this).css("color", "black");
     });
   });
+
+
+  function comToggle(parid) {
+    // console.log("toggling")
+    $(".par"+parid).toggle();
+  }
+
+  //vote weight determines up/down and by how much
+  function comvote(com_id, weight){
+    $.ajax({
+      type: "POST",
+      url: "/com_vote/",
+      data: {
+          'com_id': com_id,
+          'weight': weight,
+      }, dataType: "json",
+      success: function(data){
+        // console.log(data["points"])
+        $("#compoints_"+com_id).text(data["points"]);
+      }
+    });
+  }
+
+  function create_comment(){
+    $.ajax({
+      type: "POST",
+      url: "/create_comment/",
+      data: {
+        'text': $("#comment_area").val(),
+        'parent_mod': $("#comment_form").attr("module"),
+      },
+      success: function(){
+        $("#com_load").load("/solution/ .comments");
+      }
+    });
+  }
+
+  function handlersOff(){
+    $(".comment_down, .comment_up").off("click")
+    $(".comment_text, .expand_wrap").off("click");
+    $("#comment_form").off("submit");
+    $(".comment_up, .comment_down").off("mouseenter mouseleave");
+  }
