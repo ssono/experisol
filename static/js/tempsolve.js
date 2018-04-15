@@ -33,37 +33,36 @@ $(document).ready(function(){
   });
 
   $(".comment_up, .comment_down").hover(function(){
-    console.log("hover");
     $(this).css("color", "rgb(80, 204, 127)");
   }, function(){
     $(this).css("color", "black");
   });
 
-  $(document).on("click", ".comment_text, .expand_wrap", function(){
-    console.log("toggle")
+  $(".comment_text, .expand_wrap").click(function(){
     var id = $(this).attr("pkid");
     comToggle(id);
   });
 
-  $(document).on("click", ".comment_up", function(){
+  $(".comment_up").click(function(){
     var com_id = $(this).attr("pkid");
-    handlersOff();
-    console.log("up");
+    turnshitoff();
+    console.log("vote n");
     comvote(com_id, 1);
   });
 
-  $(document).on("click", ".comment_down", function(){
+  $(".comment_down").click(function(){
     var com_id = $(this).attr("pkid");
-    handlersOff();
-    console.log("down");
+    console.log("vote n");
+    turnshitoff();
     comvote(com_id, -1);
   });
 
-  $(document).on("submit", "#comment_form", function(event){
+  $("#comment_form").submit(function(event){
     event.preventDefault();
-    handlersOff();
-    console.log("new com");
-    create_comment();
+    console.log("click successful n");
+    turnshitoff();
+    create_comment()
+    //$.getScript("/static/js/solve.js");
   });
 
 });
@@ -75,6 +74,7 @@ function comToggle(parid) {
 
 //vote weight determines up/down and by how much
 function comvote(com_id, weight){
+  turnshitoff();
   $.ajax({
     type: "POST",
     url: "/com_vote/",
@@ -103,20 +103,47 @@ function create_comment(){
   });
 }
 
-function handlersOff(){
+function turnshitoff(){
   $(".comment_down, .comment_up").off("click")
   $(".comment_text, .expand_wrap").off("click");
   $("#comment_form").off("submit");
-  $(".comment_up, .comment_down").off("mouseenter mouseleave");
 }
 
 $(document).ajaxStop(function() {
 
-
     $(".comment_up, .comment_down").hover(function(){
-      console.log("hover");
       $(this).css("color", "rgb(80, 204, 127)");
     }, function(){
       $(this).css("color", "black");
     });
-  });
+
+    $(".comment_text, .expand_wrap").click(function(){
+      var id = $(this).attr("pkid");
+      comToggle(id);
+    });
+
+    $(".comment_up").click(function(){
+      var com_id = $(this).attr("pkid");
+      turnshitoff();
+      console.log("vote a")
+      comvote(com_id, 1);
+    });
+
+    $(".comment_down").click(function(){
+      var com_id = $(this).attr("pkid");
+      turnshitoff();
+      console.log("vote a")
+      comvote(com_id, -1);
+    });
+
+    $("#comment_form").submit( function(event){
+      turnshitoff();
+      event.preventDefault();
+      console.log("click successful a");
+      create_comment()
+      turnshitoff();
+      $.getScript("/static/js/solve.js");
+      turnshitoff();
+    });
+
+});
