@@ -27,11 +27,16 @@
     <p id="post_author">By: ssono</p>
     <div class="post_content">
       <div class="module_bar">
-        <ul class="modules">
+
+        <span class="glyphicon glyphicon-menu-left"></span>
+        <h1 id="current_module">{{ current_module.title }}</h1>
+        <span class="glyphicon glyphicon-menu-right"></span>
+
+        <!-- <ul class="modules">
           {% for module in modules %}
             <li class="module_li"><h2 class="module_titles">{{ module.title }}</h2></li>
           {% endfor %}
-        </ul>
+        </ul> -->
       </div>
         <div class="sections">
           <ul class="section_list">

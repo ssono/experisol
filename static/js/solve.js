@@ -26,8 +26,8 @@ $.ajaxSetup({
 $(document).ready(function(){
 
 
-  $(".post_up, .post_down, .post_fav").hover(function(){
-    $(this).css("color", "rgb(80, 100, 220)");
+  $(".post_up, .post_down, .post_fav, .glyphicon-menu-right, .glyphicon-menu-left").hover(function(){
+    $(this).css("color", "rgb(210, 230, 230)");
   }, function(){
     $(this).css("color", "rgb(80, 204, 127)");
   });
@@ -154,5 +154,5 @@ function create_reply(id){
     $(".comment_text, .expand_wrap").off("click");
     $(".reply_wrap").off("click");
     $("#comment_form").off("submit");
-    $(".comment_up, .comment_down").off("mouseenter mouseleave");
+    $(".comment_up, .comment_down, .glyphicon-menu-right, .glyphicon-menu-left").off("mouseenter mouseleave");
   }
