@@ -14,7 +14,7 @@ sections
 class Module(models.Model):
     title = models.CharField(max_length=50)
     next_sect = models.OneToOneField('self', null=True, blank=True, related_name="right")
-    prev_sect = models.OneToOneField('self', null=True, blank=True, related_name="left")
+    
 
     def __str__(self):
         return self.title
