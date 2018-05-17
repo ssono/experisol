@@ -57,11 +57,11 @@ def create_reply(request):
     if request.method =='POST' and request.is_ajax():
         text = str(request.POST['text'])
         if text != "":
-            new_com_id = int(request.POST['parent_com'])
-            new_com = Comment.objects.get(pk=new_com_id)
+            par_com_id = int(request.POST['parent_com'])
+            par_com = Comment.objects.get(pk=par_com_id)
             new_reply = Comment.objects.create(
                 content=text,
-                par_comment=new_com,
+                par_comment=par_com,
                 points=0
             )
             new_reply.save()

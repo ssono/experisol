@@ -148,11 +148,10 @@ function create_reply(id){
 }
 
 
-
-  function handlersOff(){
-    $(".comment_down, .comment_up").off("click");
-    $(".comment_text, .expand_wrap").off("click");
-    $(".reply_wrap").off("click");
-    $("#comment_form").off("submit");
-    $(".comment_up, .comment_down, .glyphicon-menu-right, .glyphicon-menu-left").off("mouseenter mouseleave");
-  }
+function handlersOff(){
+  $(".comment_down, .comment_up").off("click");
+  $(".comment_text, .expand_wrap").off("click");
+  $(".reply_wrap").off("click");
+  $("#comment_form").off("submit");
+  $(".comment_up, .comment_down, .glyphicon-menu-right, .glyphicon-menu-left").off("mouseenter mouseleave");
+}
