@@ -28,9 +28,9 @@
     <div class="post_content">
       <div class="module_bar">
 
-        <span class="glyphicon glyphicon-menu-left"></span>
+        <span class="glyphicon glyphicon-menu-left" pkid="{{ current_module.pk }}"></span>
         <h1 id="current_module">{{ current_module.title }}</h1>
-        <span class="glyphicon glyphicon-menu-right"></span>
+        <span class="glyphicon glyphicon-menu-right" pkid="{{ current_module.pk }}"></span>
 
         <!-- <ul class="modules">
           {% for module in modules %}

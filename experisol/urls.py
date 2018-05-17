@@ -21,6 +21,7 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', views.intro),
     url(r'^solution/$', views.post),
+    url(r'^solution/<int:mod_pk>/$', views.next_mod),
     url(r'^com_vote/$', views.comment_vote),
     url(r'^create_comment/$', views.create_comment),
     url(r'^create_reply/$', views.create_reply),

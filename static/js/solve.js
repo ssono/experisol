@@ -147,6 +147,20 @@ function create_reply(id){
   });
 }
 
+function get_next_mod(id){
+  $.ajax({
+    type: "GET",
+    url: "/create_reply/",
+    data: {
+      'current_module': id,
+    },
+    success: function(){
+      //$("#current_module").load("/solution/ .comments");
+      //load all the other stuff(comments, title, sections)
+    }
+  });
+}
+
 
 function handlersOff(){
   $(".comment_down, .comment_up").off("click");

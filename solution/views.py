@@ -18,6 +18,11 @@ def post(request):
     current_module = Module.objects.get(title="Table of Contents")
     return render(request, 'solve.html', {'modules': modules, 'sections': current_module.section_set.all(), 'comments': current_module.comment_set.all(), 'current_module': current_module,})
 
+def next_mod(request, mod_pk):
+    modules = Module.objects.all()
+    current_module = Module.objects.get(pk=mod_pk)
+    return render(request, 'solve.html', {'modules': modules, 'sections': current_module.section_set.all(), 'comments': current_module.comment_set.all(), 'current_module': current_module,})
+
 
 def comment_vote(request):
     if request.method == 'POST' and request.is_ajax():
