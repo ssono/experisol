@@ -28,6 +28,19 @@ def next_mod(request, mod_pk):
         return JsonResponse(newdata)
     return HttpResponse("<a href='/solution/'"+ mod_pk + "/><h1>Return</h1></a>")
 
+def prev_mod(request, mod_pk):
+    modules = Module.objects.all()
+    current_module = Module.objects.get(pk=mod_pk)
+    if request.is_ajax():
+        try:
+            current_module = current_module.prev_mod
+        except Module.prev_mod.RelatedObjectDoesNotExist:
+            pass
+        newdata = {'new_pk': str(current_module.pk)}
+        return JsonResponse(newdata)
+    return HttpResponse("<a href='/solution/'"+ mod_pk + "/><h1>Return</h1></a>")
+
+
 
 def comment_vote(request):
     if request.method == 'POST' and request.is_ajax():
