@@ -13,18 +13,20 @@ def intro(request):
     return render(request, 'intro.html', {})
 
 
-def post(request):
+def post(request, mod_pk):
     modules = Module.objects.all()
-    current_module = Module.objects.get(title="Table of Contents")
+    current_module = Module.objects.get(pk=mod_pk)
     return render(request, 'solve.html', {'modules': modules, 'sections': current_module.section_set.all(), 'comments': current_module.comment_set.all(), 'current_module': current_module,})
 
 def next_mod(request, mod_pk):
     modules = Module.objects.all()
     current_module = Module.objects.get(pk=mod_pk)
-    print(current_module.pk)
-    if current_module.next_mod != None:
-        current_module = current_module.next_mod
-    return render(request, 'solve.html', {'modules': modules, 'sections': current_module.section_set.all(), 'comments': current_module.comment_set.all(), 'current_module': current_module,})
+    if request.is_ajax():
+        if current_module.next_mod != None:
+            current_module = current_module.next_mod
+        newdata = {'new_pk': str(current_module.pk)}
+        return JsonResponse(newdata)
+    return HttpResponse("<a href='/solution/'"+ mod_pk + "/><h1>Return</h1></a>")
 
 
 def comment_vote(request):
@@ -33,12 +35,6 @@ def comment_vote(request):
         weight = request.POST['weight']
         voting = Comment.objects.get(pk=com_id)
         voting.points += int(weight)
-        """
-        if(weight):
-            voting.points += 1
-        else:
-            voting.points -= 1
-        """
 
         voting.save()
         newdata = {}

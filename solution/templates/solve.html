@@ -32,7 +32,7 @@
           <div id="mod_bar_wrap">
             <div class="module_bar">
               <span class="glyphicon glyphicon-menu-left" pkid="{{ current_module.pk }}"></span>
-              <h1 id="current_module">{{ current_module.title }}</h1>
+              <h1 id="current_module" pkid="{{ current_module.pk }}">{{ current_module.title }}</h1>
               <span class="glyphicon glyphicon-menu-right" pkid="{{ current_module.pk }}"></span>
             </div>
           </div>
@@ -101,7 +101,7 @@
   <div id="com_wrap">
     <div class="comments">
 
-      <form method="POST" action="/solution/" id="comment_form" module="{{ current_module.pk }}">
+      <form method="POST" action="/solution/{{ current_module.pk }}/" id="comment_form" module="{{ current_module.pk }}">
         <textarea name="new_comment" id="comment_area" placeholder="What you got?"></textarea>
         <input type="submit" value="Comment" id="comment_submit">
         {% csrf_token %}
@@ -134,7 +134,7 @@
         </div>
 
         <div class="reply_toggle hiding" id="reply_{{ comment.pk }}">
-          <form method="POST" action="/solution/" class="reply_form" com_par="{{ comment.pk }}">
+          <form method="POST" action="/solution/{{ current_module.pk }}/" class="reply_form" com_par="{{ comment.pk }}">
             <textarea name="new_reply" class="reply_area" id="reply_area{{ comment.pk }}" placeholder="What you got?"></textarea>
             <input type="submit" value="Reply" class="reply_submit">
             {% csrf_token %}
@@ -149,4 +149,5 @@
       {% endfor %}
     </div>
   </div>
+
 </body>

@@ -45,8 +45,6 @@ $(document).ready(function(){
     get_next_mod(id);
   });
 
-
-
   $(".comment_up, .comment_down").hover(function(){
     console.log("hover");
     $(this).css("color", "rgb(80, 204, 127)");
@@ -93,7 +91,6 @@ $(document).ready(function(){
     console.log("new rep");
     create_reply(id);
   });
-
 
 });
 
@@ -143,6 +140,8 @@ $(document).ajaxStop(function() {
   }
 
 function create_comment(){
+  var id = $("#current_module").attr("pkid");
+  var current_url = "/solution/"+id+"/";
   $.ajax({
     type: "POST",
     url: "/create_comment/",
@@ -151,34 +150,38 @@ function create_comment(){
       'parent_mod': $("#comment_form").attr("module"),
     },
     success: function(){
-      $("#com_wrap").load("/solution/ .comments");
+      $("#com_wrap").load(current_url + " .comments");
     }
   });
 }
 
-function create_reply(id){
+function create_reply(com_id){
+  var mod_id = $("#current_module").attr("pkid");
+  var current_url = "/solution/"+mod_id+"/";
   $.ajax({
     type: "POST",
     url: "/create_reply/",
     data: {
-      'text': $("#reply_area" + id).val(),
-      'parent_com': id,
+      'text': $("#reply_area" + com_id).val(),
+      'parent_com': com_id,
     },
     success: function(){
-      $("#com_wrap").load("/solution/ .comments");
+      $("#com_wrap").load(current_url + " .comments");
     }
   });
 }
 
 function get_next_mod(id){
-  var mod_url = "/solution/" + id + "/"
+  var get_next = "/solution/next/" + id + "/"
   $.ajax({
     type: "GET",
-    url: mod_url,
-    success: function(){
+    url: get_next,
+    success: function(data){
+      var mod_url = "/solution/"+data['new_pk'] + "/";
       $("#mod_bar_wrap").load(mod_url+ " .module_bar");
       $("#com_wrap").load(mod_url + " .comments");
       $("#section_wrap").load(mod_url + " .sections");
+      history.pushState(null,null, mod_url);
     }
   });
 }
@@ -192,4 +195,4 @@ function handlersOff(){
   $(".comment_up, .comment_down, .glyphicon-menu-right, .glyphicon-menu-left").off("mouseenter mouseleave");
 }
 
-//go left, comments, hover
+//go left, comments
