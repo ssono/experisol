@@ -14,6 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 from django.conf.urls import url
+from django.urls import path
 from django.contrib import admin
 from solution import views
 
@@ -21,7 +22,7 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', views.intro),
     url(r'^solution/$', views.post),
-    url(r'^solution/<int:mod_pk>/$', views.next_mod),
+    path('solution/<int:mod_pk>/', views.next_mod),
     url(r'^com_vote/$', views.comment_vote),
     url(r'^create_comment/$', views.create_comment),
     url(r'^create_reply/$', views.create_reply),

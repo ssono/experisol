@@ -25,19 +25,21 @@
   <div id="frame">
     <h1 id="post_title">Solvent: Collaborative Brainstorming</h1>
     <p id="post_author">By: ssono</p>
-    <div class="post_content">
-      <div class="module_bar">
 
-        <span class="glyphicon glyphicon-menu-left" pkid="{{ current_module.pk }}"></span>
-        <h1 id="current_module">{{ current_module.title }}</h1>
-        <span class="glyphicon glyphicon-menu-right" pkid="{{ current_module.pk }}"></span>
+      <div class="post_content">
+        <div class="module_bar">
 
-        <!-- <ul class="modules">
-          {% for module in modules %}
-            <li class="module_li"><h2 class="module_titles">{{ module.title }}</h2></li>
-          {% endfor %}
-        </ul> -->
+          <div id="mod_bar_wrap">
+            <div class="module_bar">
+              <span class="glyphicon glyphicon-menu-left" pkid="{{ current_module.pk }}"></span>
+              <h1 id="current_module">{{ current_module.title }}</h1>
+              <span class="glyphicon glyphicon-menu-right" pkid="{{ current_module.pk }}"></span>
+            </div>
+          </div>
+
       </div>
+
+      <div id="section_wrap">
         <div class="sections">
           <ul class="section_list">
             {% for section in sections %}
@@ -45,7 +47,9 @@
               <li class="sect"><p class="sect_description">{{ section.description|linebreaks }}</p></li>
             {% endfor %}
           </ul>
+        </div>
       </div>
+
     </div>
     <!--<hr id="break">!-->
     <div class="post_data">
@@ -94,7 +98,7 @@
     <p class="subdata">587 Points | 04/22/18</p>
 
   </div>
-  <div id="com_load">
+  <div id="com_wrap">
     <div class="comments">
 
       <form method="POST" action="/solution/" id="comment_form" module="{{ current_module.pk }}">

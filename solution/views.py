@@ -21,6 +21,9 @@ def post(request):
 def next_mod(request, mod_pk):
     modules = Module.objects.all()
     current_module = Module.objects.get(pk=mod_pk)
+    print(current_module.pk)
+    if current_module.next_mod != None:
+        current_module = current_module.next_mod
     return render(request, 'solve.html', {'modules': modules, 'sections': current_module.section_set.all(), 'comments': current_module.comment_set.all(), 'current_module': current_module,})
 
 

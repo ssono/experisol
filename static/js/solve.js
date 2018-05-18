@@ -26,11 +26,26 @@ $.ajaxSetup({
 $(document).ready(function(){
 
 
-  $(".post_up, .post_down, .post_fav, .glyphicon-menu-right, .glyphicon-menu-left").hover(function(){
+  $(".post_up, .post_down, .post_fav").hover(function(){
     $(this).css("color", "rgb(210, 230, 230)");
-  }, function(){
+    }, function(){
     $(this).css("color", "rgb(80, 204, 127)");
   });
+
+  $(".glyphicon-menu-right, .glyphicon-menu-left").hover(function(){
+    console.log("scroll")
+    $(this).css("color", "rgb(210, 230, 230)");
+    }, function(){
+    $(this).css("color", "rgb(80, 204, 127)");
+  });
+
+  $("#mod_bar_wrap").on("click", ".glyphicon-menu-right", function(){
+    console.log("next_post");
+    var id = $(this).attr("pkid");
+    get_next_mod(id);
+  });
+
+
 
   $(".comment_up, .comment_down").hover(function(){
     console.log("hover");
@@ -39,39 +54,39 @@ $(document).ready(function(){
     $(this).css("color", "black");
   });
 
-  $("#com_load").on("click", ".comment_text, .expand_wrap", function(){
+  $("#com_wrap").on("click", ".comment_text, .expand_wrap", function(){
     console.log("toggle")
     var id = $(this).attr("pkid");
     comToggle(id);
   });
 
-  $("#com_load").on("click", ".reply_wrap", function(){
+  $("#com_wrap").on("click", ".reply_wrap", function(){
     var id = $(this).attr("pkid");
     replyToggle(id);
   });
 
-  $("#com_load").on("click", ".comment_up", function(){
+  $("#com_wrap").on("click", ".comment_up", function(){
     var com_id = $(this).attr("pkid");
     handlersOff();
     console.log("up");
     comvote(com_id, 1);
   });
 
-  $("#com_load").on("click", ".comment_down", function(){
+  $("#com_wrap").on("click", ".comment_down", function(){
     var com_id = $(this).attr("pkid");
     handlersOff();
     console.log("down");
     comvote(com_id, -1);
   });
 
-  $("#com_load").on("submit", "#comment_form", function(event){
+  $("#com_wrap").on("submit", "#comment_form", function(event){
     event.preventDefault();
     handlersOff();
     console.log("new com");
     create_comment();
   });
 
-  $("#com_load").on("submit", ".reply_form", function(event){
+  $("#com_wrap").on("submit", ".reply_form", function(event){
     event.preventDefault();
     var id = $(this).attr("com_par");
     handlersOff();
@@ -90,6 +105,14 @@ $(document).ajaxStop(function() {
     }, function(){
       $(this).css("color", "black");
     });
+
+    $(".glyphicon-menu-right, .glyphicon-menu-left").hover(function(){
+      console.log("scroll")
+      $(this).css("color", "rgb(210, 230, 230)");
+    }, function(){
+      $(this).css("color", "rgb(80, 204, 127)");
+    });
+
   });
 
 
@@ -128,7 +151,7 @@ function create_comment(){
       'parent_mod': $("#comment_form").attr("module"),
     },
     success: function(){
-      $("#com_load").load("/solution/ .comments");
+      $("#com_wrap").load("/solution/ .comments");
     }
   });
 }
@@ -142,21 +165,20 @@ function create_reply(id){
       'parent_com': id,
     },
     success: function(){
-      $("#com_load").load("/solution/ .comments");
+      $("#com_wrap").load("/solution/ .comments");
     }
   });
 }
 
 function get_next_mod(id){
+  var mod_url = "/solution/" + id + "/"
   $.ajax({
     type: "GET",
-    url: "/create_reply/",
-    data: {
-      'current_module': id,
-    },
+    url: mod_url,
     success: function(){
-      //$("#current_module").load("/solution/ .comments");
-      //load all the other stuff(comments, title, sections)
+      $("#mod_bar_wrap").load(mod_url+ " .module_bar");
+      $("#com_wrap").load(mod_url + " .comments");
+      $("#section_wrap").load(mod_url + " .sections");
     }
   });
 }
@@ -169,3 +191,5 @@ function handlersOff(){
   $("#comment_form").off("submit");
   $(".comment_up, .comment_down, .glyphicon-menu-right, .glyphicon-menu-left").off("mouseenter mouseleave");
 }
+
+//go left, comments, hover
