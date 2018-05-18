@@ -39,17 +39,17 @@ $(document).ready(function(){
     $(this).css("color", "rgb(80, 204, 127)");
   });
 
-  // $("#mod_bar_wrap").on("click", ".glyphicon-menu-right", function(){
-  //   console.log("next_post");
-  //   var id = $(this).attr("pkid");
-  //   get_next_mod(id);
-  // });
-  //
-  // $("#mod_bar_wrap").on("click", ".glyphicon-menu-left", function(){
-  //   console.log("prev_post");
-  //   var id = $(this).attr("pkid");
-  //   get_prev_mod(id);
-  // });
+  $("#mod_bar_wrap").on("click", ".glyphicon-menu-right", function(){
+    console.log("next_post");
+    var id = $(this).attr("pkid");
+    get_next_mod(id);
+  });
+
+  $("#mod_bar_wrap").on("click", ".glyphicon-menu-left", function(){
+    console.log("prev_post");
+    var id = $(this).attr("pkid");
+    get_prev_mod(id);
+  });
 
   $(document).keydown(function(e){
     var id = $("#current_module").attr("pkid");
