@@ -13,15 +13,15 @@ sections
 
 class Module(models.Model):
     title = models.CharField(max_length=50)
-    next_mod = models.OneToOneField('self', null=True, blank=True, related_name="prev_mod")
+    next_mod = models.OneToOneField('self', on_delete=models.SET_NULL, null=True, blank=True, related_name="prev_mod")
 
 
     def __str__(self):
         return self.title
 
 class Comment(models.Model):
-    module = models.ForeignKey(Module, null=True, blank=True)
-    par_comment = models.ForeignKey('self', null=True, blank=True, related_name="comkids")
+    module = models.ForeignKey(Module, on_delete=models.CASCADE, null=True, blank=True)
+    par_comment = models.ForeignKey('self', on_delete=models.CASCADE, null=True, blank=True, related_name="comkids")
     points = models.IntegerField(default=0)
     content = models.TextField()
 

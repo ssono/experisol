@@ -12,6 +12,6 @@ class SectionAdmin(admin.ModelAdmin):
 class CommentAdmin(admin.ModelAdmin):
     list_display = ('pk', 'points','module', 'par_comment', 'content')
 # Register your models here.
-admin.site.register(Module)
+admin.site.register(Module, ModuleAdmin)
 admin.site.register(Comment, CommentAdmin)
 admin.site.register(Section, SectionAdmin)
