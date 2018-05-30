@@ -84,7 +84,8 @@ $(document).ready(function(){
     handlersOff();
     console.log("up");
     comvote(com_id, 1);
-    $(this).hide();
+    document.getElementById("up"+com_id).classList.remove("comment_up");
+    $(this).css("color", "rgb(80,204,127)");
   });
 
   // $("#com_wrap").on("click", ".comment_down", function(){

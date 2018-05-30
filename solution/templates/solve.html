@@ -114,11 +114,11 @@
           <div class="comment_points_wrap">
             <p class="comment_points">
               {% csrf_token %}
-              <span class="glyphicon glyphicon-menu-up comment_up" pkid="{{ comment.pk }}"></span>
+              <span class="glyphicon glyphicon-menu-up comment_up" id="up{{ comment.pk }}"pkid="{{ comment.pk }}"></span>
             </p>
             <p class="comment_points" id="compoints_{{ comment.pk }}">{{ comment.points }}</p>
             <!-- <p class="comment_points">
-              <span class="glyphicon glyphicon-menu-down comment_down" pkid="{{ comment.pk }}"></span> 
+              <span class="glyphicon glyphicon-menu-down comment_down" pkid="{{ comment.pk }}"></span>
             </p> -->
           </div>
 
