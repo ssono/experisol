@@ -84,14 +84,15 @@ $(document).ready(function(){
     handlersOff();
     console.log("up");
     comvote(com_id, 1);
+    $(this).hide();
   });
 
-  $("#com_wrap").on("click", ".comment_down", function(){
-    var com_id = $(this).attr("pkid");
-    handlersOff();
-    console.log("down");
-    comvote(com_id, -1);
-  });
+  // $("#com_wrap").on("click", ".comment_down", function(){
+  //   var com_id = $(this).attr("pkid");
+  //   handlersOff();
+  //   console.log("down");
+  //   comvote(com_id, -1);
+  // });
 
   $("#com_wrap").on("submit", "#comment_form", function(event){
     event.preventDefault();
