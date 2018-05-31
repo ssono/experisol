@@ -42,8 +42,8 @@ class Section(models.Model):
 
 class TotalStats(models.Model):
     uniqueUsers = models.IntegerField(default=0)
-    numComments = models.IntegerField(default=0)
-    numVotes = models.IntegerField(default=0)
+    totalComments = models.IntegerField(default=0)
+    totalVotes = models.IntegerField(default=0)
     totalTime = models.DurationField(default=timedelta())
     avgTime = models.DurationField(default=timedelta())
 
