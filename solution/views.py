@@ -3,17 +3,26 @@ from __future__ import unicode_literals
 
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, Http404, HttpResponseRedirect, FileResponse, JsonResponse
-from solution.models import Section, Module, Comment
+from solution.models import Section, Module, Comment, TotalStats, UserStats
 
-
+#Stats views
+def ensureTotalStats():
+    numObjects = len(TotalStats.objects.all())
+    if numObjects != 1:
+        if numObjects > 1:
+            TotalStats.objects.all().delete()
+        newTS = TotalStats()
+        newTS.save()
 
 
 # Create your views here.
 def intro(request):
+    ensureTotalStats()
     return render(request, 'intro.html', {})
 
 
 def post(request, mod_pk):
+    ensureTotalStats()
     modules = Module.objects.all()
     current_module = Module.objects.get(pk=mod_pk)
     return render(request, 'solve.html', {'modules': modules, 'sections': current_module.section_set.all(), 'comments': current_module.comment_set.all(), 'current_module': current_module,})
