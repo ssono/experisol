@@ -2,7 +2,7 @@
 from __future__ import unicode_literals
 
 from django.db import models
-import datetime
+from datetime import timedelta, time, datetime, date
 """
 comments
 modules
@@ -44,12 +44,13 @@ class TotalStats(models.Model):
     uniqueUsers = models.IntegerField(default=0)
     numComments = models.IntegerField(default=0)
     numVotes = models.IntegerField(default=0)
-    totalTime = models.DurationField(default=datetime.timedelta())
-    avgTime = models.DurationField(default=datetime.timedelta())
+    totalTime = models.DurationField(default=timedelta())
+    avgTime = models.DurationField(default=timedelta())
 
 class UserStats(models.Model):
     totalStats = models.ForeignKey(TotalStats, on_delete=models.CASCADE, null=True, blank=True, related_name="userStatList")
     ipHash = models.IntegerField(default=0)
-    timeSpent = models.DurationField(default=datetime.timedelta())
+    timeSpent = models.DurationField(default=timedelta())
     comments = models.IntegerField(default=0)
     votes = models.IntegerField(default=0)
+    lastAction = models.DateTimeField(auto_now_add=True, blank=True)
