@@ -109,6 +109,7 @@ def prev_mod(request, mod_pk):
 def comment_vote(request):
     ensureTotalStats()
     ipCheck(request)
+    addVote(request)
     if request.method == 'POST' and request.is_ajax():
         com_id = request.POST['com_id']
         weight = request.POST['weight']
@@ -154,3 +155,26 @@ def create_reply(request):
             new_reply.save()
         return render(request, 'solve.html', {})
     return HttpResponse("Weird")
+
+
+def addVote(request):
+    ip = get_client_ip(request)
+    if ip != None:
+        ipHash = hash(ip)
+        user = UserStats.objects.get(ipHash=ipHash)
+        user.votes += 1
+        user.save()
+    tstats = TotalStats.objects.all()[0]
+    tstats.totalVotes += 1
+    tstats.save()
+
+def addComment(request):
+    ip = get_client_ip(request)
+    if ip != None:
+        ipHash = hash(ip)
+        user = UserStats.objects.get(ipHash=ipHash)
+        user.comments += 1
+        user.save()
+    tstats = TotalStats.objects.all()[0]
+    tstats.totalComments += 1
+    tstats.save()
