@@ -48,9 +48,9 @@ class TotalStats(models.Model):
     avgTime = models.DurationField(default=timedelta())
 
 class UserStats(models.Model):
-    totalStats = models.ForeignKey(TotalStats, on_delete=models.CASCADE, null=True, blank=True, related_name="userStatList")
-    ipHash = models.IntegerField(default=0)
+    totalstats = models.ForeignKey(TotalStats, on_delete=models.CASCADE, null=True, blank=True)
+    ipHash = models.IntegerField()
     timeSpent = models.DurationField(default=timedelta())
     comments = models.IntegerField(default=0)
     votes = models.IntegerField(default=0)
-    lastAction = models.DateTimeField(auto_now_add=True, blank=True)
+    lastAction = models.DateTimeField()
