@@ -68,7 +68,10 @@ def newAvgTime():
 def intro(request):
     ensureTotalStats()
     ipCheck(request)
-    return render(request, 'intro.html', {})
+    html = 'intro.html'
+    if request.user_agent.is_mobile:
+        html = 'mobintro.html'
+    return render(request, html, {})
 
 
 def post(request, mod_pk):

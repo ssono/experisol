@@ -1,0 +1,142 @@
+
+h1 {
+  font-family: 'Poiret One';
+  font-size: 1em;
+  width: 100%;
+  font-weight: bold;
+}
+
+body {
+  margin-top: 0px;
+  margin-left: 0px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+  font-family: 'Raleway';
+}
+
+hr {
+  margin-left:auto;
+  margin-right: auto;
+  margin-top: 0;
+  margin-bottom: 0;
+  width: 50%;
+  display: block;
+  border-top: 1px solid rgb(22,49,72);
+}
+
+
+
+#top {
+  background-color: rgb(80,204,127);
+  padding: 5%;
+  margin: 0px;
+  text-align: center;
+  font-size: 2em;
+
+}
+
+.titles{
+  -webkit-margin-before: 0.5em;
+  margin-bottom: 0;
+  font-size: 1.5em;
+  text-align: center;
+  float: center;
+}
+
+.explanation {
+  padding: 2%;
+  background-color: white;
+  display: flex;
+}
+
+#left_explanation{
+  width: 100%;
+  font-size: 1.5em;
+}
+
+#right_explanation{
+  width: 100%;
+  float: center;
+  border-bottom: 5px solid rgb(80, 204, 127);
+
+}
+
+#exp_text{
+  margin-top: 0em;
+  margin-bottom: 0em;
+  margin-left: 1%;
+  font-size: 1.5em;
+  margin-right: .5%;
+  text-align: justify;
+}
+
+.problem {
+  padding: 2%;
+  background-color: rgb(230, 240, 250);
+  display: flex;
+}
+
+#left_problem{
+  width: 100%;
+  float: center;
+  border-bottom: 5px solid rgb(80, 204, 127);
+}
+
+#right_problem{
+  width: 100%;
+  font-size: 1.5em;
+}
+
+#prob_text{
+  margin-top: 0em;
+  margin-bottom: 0em;
+  margin-left: 1%;
+  font-size: 1.5em;
+  margin-right: .5%;
+  text-align: justify;
+}
+
+
+.rules {
+  padding: 2%;
+  background-color: rgb(190, 210, 220);
+  display: flex;
+}
+
+#left_rules{
+  width: 100%;
+  font-size: 1.5em;
+}
+
+#right_rules{
+  width: 100%;
+  float: center;
+  border-bottom: 5px solid rgb(80, 204, 127);
+}
+
+#rule_text{
+  margin-top: 0em;
+  margin-bottom: 0em;
+  margin-left: 1%;
+  font-size: 1.5em;
+  margin-right: .5%;
+  text-align: justify;
+}
+
+#enter_container{
+  text-align: center;
+  float: center;
+  background-color: rgb(5, 55, 75);
+}
+
+#enter{
+  margin: 5%;
+  border: 3px solid rgb(80, 204, 127);
+  text-decoration: none;
+  font-family: 'Poiret One',cursive;
+  font-weight: bold;
+  padding: 2% 5%;
+  color: rgb(80, 204, 127);
+  background-color: rgb(5, 55, 75);
+  font-size: 2.5em;
+}
