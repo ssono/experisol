@@ -27,17 +27,15 @@
     <p id="post_author">By: ssono</p>
 
       <div class="post_content">
-        <div class="module_bar">
 
-          <div id="mod_bar_wrap">
-            <div class="module_bar">
-              <span class="glyphicon glyphicon-menu-left" pkid="{{ current_module.pk }}"></span>
+
+        <div id="mod_bar_wrap">
+          <div class="module_bar">
+            <span class="glyphicon glyphicon-menu-left" pkid="{{ current_module.pk }}"></span>
               <h1 id="current_module" pkid="{{ current_module.pk }}">{{ current_module.title }}</h1>
-              <span class="glyphicon glyphicon-menu-right" pkid="{{ current_module.pk }}"></span>
-            </div>
+            <span class="glyphicon glyphicon-menu-right" pkid="{{ current_module.pk }}"></span>
           </div>
-
-      </div>
+        </div>
 
       <div id="section_wrap">
         <div class="sections">
@@ -87,12 +85,12 @@
     <p class="subdata">444 Points | 04/06/18</p>
     <hr>
 
-    <p class="subname">Restructuring the U.S Government<p>
+    <p class="subname">Designing a simpler voting process<p>
     <p class="subdata">By: Nietzsche</p>
     <p class="subdata">248 Points | 11/02/17</p>
     <hr>
 
-    <p class="subname">Bipartisan strategies to reduce mass shootings<p>
+    <p class="subname">Parks for outdoor survival techniques(primitive technology)<p>
     <p class="subdata">By: Socrates</p>
     <p class="subdata">101 Points | 04/22/18</p>
 
@@ -109,7 +107,7 @@
 
       {% for comment in comments %}
         <div class="comm" id="com_{{ comment.pk }}" pkid="{{ comment.pk }}">
-          <p class="comment_text" pkid="{{ comment.pk }}">{{ comment.content }}</p>
+          <p pkid="{{ comment.pk }}">{{ comment.content }}</p>
           <div class="comment_points_wrap">
             <p class="comment_points">
               {% csrf_token %}
@@ -123,12 +121,15 @@
 
           <div class="expand_wrap" pkid="{{ comment.pk }}">
           {% if comment.comkids.count > 0 %}
-              <p class="expandable">replies</p>
+              <p class="expandable">Expand</p>
+          {% endif %}
+          {% if comment.comkids.count == 0 %}
+              <p class="expandable">0 replies</p>
           {% endif %}
           </div>
 
           <div class="reply_wrap" pkid="{{ comment.pk }}">
-            <p class="reply">reply <span class="glyphicon glyphicon-share-alt"></span></p>
+            <p class="reply">Reply <span class="glyphicon glyphicon-share-alt"></span></p>
           </div>
         </div>
 

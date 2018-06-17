@@ -43,21 +43,23 @@ hr{
 }
 
 #frame{
-  margin: 1% 1% 0% 7%;
+  margin: 1% 2%;
   padding: 0%;
   color: rgb(0,30,50);
   background-color: rgb(80,204,127);
   display: inline-block;
-  width: 69%;
+  width: 96%;
 }
 
 #post_title{
-  margin: 1% 5% 1% 1%;
+  margin: 1%;
+  font-size: 1.5em;
   display: inline-block;
 }
 
 #post_author{
-  margin: 0% 5% 1% 1%;
+  margin: 1% !important;
+  font-size: 1em;
 }
 
 .post_content {
@@ -80,30 +82,30 @@ hr{
 }
 
 .glyphicon-menu-left{
-  font-size: 2.5em;
+  font-size: 1.5em;
   color: rgb(80,204, 127);
   float: left;
   display: inline-block;
-  margin: 1%;
+  margin: 2% 1%;
   width: 3%;
 }
 
 #current_module{
-  margin:0%;
-  width: 90%;
-  font-size: 2.5em;
+  margin:1%;
+  width: 85%;
+  font-size: 1.5em;
   display: inline-block;
   text-align: center;
   color: rgb(80,204,127);
-  padding: 1%;
+  padding: 1% 0%;
 }
 
 .glyphicon-menu-right{
-  font-size: 2.5em;
+  font-size: 1.5em;
   color: rgb(80,204, 127);
-  float: right;
+  /* float: right; */
   display: inline-block;
-  margin: 1%;
+  margin: 2% 1%;
   width: 3%;
 }
 
@@ -133,14 +135,16 @@ hr{
 
 .section_list {
   list-style-type: none;
+  -webkit-padding-start: 10px;
 }
 
 .sec_title{
   font-weight: bold;
-  font-size: 2em;
+  font-size: 1.5em;
 }
 
 .sect_description {
+  font-size: 1em;
 }
 
 .post_data{
@@ -150,26 +154,8 @@ hr{
 }
 
 .post_vote{
-  font-size: 2em;
+  font-size: 1.5em;
   margin: 0% 1% !important;
-}
-
-.trending{
-  width:16%;
-  margin: 1% 7% 1% 0%;
-  background-color: white;
-  display: inline-block;
-  float:right;
-}
-.trend_select{
-  padding: 1%;
-  background-color: rgb(80, 204, 127);
-}
-
-#display_title{
-  margin:1%;
-  color: rgb(0,30,50);
-  background-color: rgb(80, 204, 127);
 }
 
 .subname{
@@ -184,10 +170,10 @@ hr{
 }
 
 .comments {
-  margin: 1% 1% 1% 7%;
+  margin: 2%;
   background-color: inherit;
   font-size: .75em;
-  width: 69%;
+  width: 96%;
 }
 
 #comment_form{
@@ -198,27 +184,23 @@ hr{
 #comment_area{
   width: 90%;
   height: 150px;
-  margin: 0%;
-  font-size: 1.5em;
+  margin: 0% 5%;
+  font-size: 1.25em;
   background-color: rgb(200, 210, 220);
   /* background-color: rgb(170,200,200); */
-  border-top-left-radius: 10px;
-  border-bottom-left-radius: 10px;
-  display:inline-block;
+  border-radius: 10px;
 }
 
 #comment_submit{
-  float:right;
-  display: inline-block;
-  width: 10%;
-  height:150px;
-  font-size: 1.7em;
+  float:center;
+  width: 90%;
+  height: 10%;
+  font-size: 1.25em;
   border-style: none;
   background-color: rgb(0,30,50);
   color: rgb(80,204,127);
-  margin:0%;
-  border-top-right-radius: 10px;
-  border-bottom-right-radius: 10px;
+  margin:0% 5%;
+  border-radius: 5px;
 }
 
 .reply_toggle{
@@ -233,26 +215,21 @@ hr{
 .reply_area{
   width: 90%;
   height: 100px;
-  margin: 0%;
-  font-size: 1.5em;
-  background-color: rgb(170,200,200);
-  border-top-left-radius: 10px;
-  border-bottom-left-radius: 10px;
-  display:inline-block;
+  margin: 0% 5%;
+  font-size: 1.25em;
+  background-color: rgb(200,210,220);
+  border-radius: 10px;
 }
 
 .reply_submit{
-  float:right;
-  display: inline-block;
-  width: 10%;
-  height:100px;
-  font-size: 1.7em;
+  width: 90%;
+  height:25px;
+  font-size: 1.25em;
   border-style: none;
   background-color: rgb(0,30,50);
   color: rgb(80,204,127);
-  margin:0%;
-  border-top-right-radius: 10px;
-  border-bottom-right-radius: 10px;
+  margin:0% 5%;
+  border-radius: 5px;
 }
 
 .comm {
@@ -267,8 +244,10 @@ hr{
   display: inline-block;
 }
 .comment_points_wrap{
-  width: 33%;
+  width: 32%;
   display: inline-block;
+  float: left;
+  margin-bottom: 1%;
 }
 
 .expandable{
@@ -276,13 +255,17 @@ hr{
   color:rgb(70,80,100);
 }
 .expand_wrap{
-  width: 33%;
+  width: 32%;
   display: inline-block;
+  float: center;
+  margin-bottom: 1%;
 }
 
 .reply_wrap{
-  width: 33%;
+  width: 32%;
   display: inline-block;
+  float: right;
+  margin-bottom: 1%;
 }
 .reply{
   display: inline-block;

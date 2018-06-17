@@ -79,7 +79,10 @@ def post(request, mod_pk):
     ipCheck(request)
     modules = Module.objects.all()
     current_module = Module.objects.get(pk=mod_pk)
-    return render(request, 'solve.html', {'modules': modules, 'sections': current_module.section_set.all(), 'comments': current_module.comment_set.all(), 'current_module': current_module,})
+    html = 'solve.html'
+    if request.user_agent.is_mobile:
+        html = 'mobsolve.html'
+    return render(request, html, {'modules': modules, 'sections': current_module.section_set.all(), 'comments': current_module.comment_set.all(), 'current_module': current_module,})
 
 def next_mod(request, mod_pk):
     ensureTotalStats()
