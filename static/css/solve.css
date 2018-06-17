@@ -36,10 +36,10 @@ hr{
 }
 
 #contact {
-  color: rgb(130, 130, 150);
+  color: rgb(180, 190, 200);
   float: right;
   padding: 0px;
-  margin: 1%;
+  font-size: 1.1em !important;
 }
 
 #frame{
