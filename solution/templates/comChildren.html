@@ -18,12 +18,7 @@
         </div>
 
         <div class="expand_wrap" pkid="{{ child.pk }}">
-          {% if child.comkids.count > 0 %}
-              <p class="expandable">Expand</p>
-          {% endif %}
-          {% if child.comkids.count == 0 %}
-              <p class="expandable">0 replies</p>
-          {% endif %}
+          <p class="expandable">{{child.comkids.count}} replies</p>
         </div>
 
         <div class="reply_wrap" pkid="{{ child.pk }}">
