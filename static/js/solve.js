@@ -25,6 +25,11 @@ $.ajaxSetup({
 
 $(document).ready(function(){
 
+  $(window).on("popstate", function(){
+    console.log("pop");
+    location.reload();
+  });
+
 
   $(".post_up, .post_down, .post_fav").hover(function(){
     $(this).css("color", "rgb(210, 230, 230)");
