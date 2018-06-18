@@ -15,7 +15,7 @@ def newUser(ipHash):
     user = UserStats(ipHash=ipHash, lastAction=datetime.now(timezone.utc), totalstats=tstats)
     user.save()
     tstats.uniqueUsers += 1
-    tstats.save
+    tstats.save()
     return
 
 def ensureTotalStats():
