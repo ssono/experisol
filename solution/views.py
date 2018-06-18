@@ -131,6 +131,7 @@ def comment_vote(request):
 def create_comment(request):
     ensureTotalStats()
     ipCheck(request)
+    addComment(request)
     if request.method =='POST' and request.is_ajax():
         text = str(request.POST['text'])
         if text != "":
@@ -148,6 +149,7 @@ def create_comment(request):
 def create_reply(request):
     ensureTotalStats()
     ipCheck(request)
+    addComment(request)
     if request.method =='POST' and request.is_ajax():
         text = str(request.POST['text'])
         if text != "":
