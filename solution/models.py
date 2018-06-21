@@ -36,6 +36,10 @@ class Section(models.Model):
     title = models.CharField(max_length=80)
     description = models.TextField()
     module = models.ForeignKey(Module, on_delete=models.CASCADE)
+    order = models.IntegerField(null=True, blank=True)
+
+    class Meta:
+            ordering = ['-order']
 
     def __str__(self):
         return self.title
