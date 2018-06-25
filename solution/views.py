@@ -82,7 +82,7 @@ def post(request, mod_pk):
     html = 'solve.html'
     if request.user_agent.is_mobile:
         html = 'mobsolve.html'
-    return render(request, html, {'modules': modules, 'sections': current_module.section_set.all(), 'comments': current_module.comment_set.all(), 'current_module': current_module,})
+    return render(request, html, {'modules': modules, 'sections': current_module.sections.all(), 'comments': current_module.comments.all(), 'current_module': current_module,})
 
 def next_mod(request, mod_pk):
     ensureTotalStats()

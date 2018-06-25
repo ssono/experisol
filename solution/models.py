@@ -12,16 +12,28 @@ sections
 """
 # Create your models here.
 
+#tite, next/prev_proj, modules, points, author
+class Project(models.Model):
+    title = models.CharField(max_length=100)
+    author = models.CharField(max_length=50)
+    next_proj = models.OneToOneField('self', on_delete=models.SET_NULL, null=True, blank=True, related_name="prev_proj")
+    points = models.IntegerField(default=0)
+
+
 class Module(models.Model):
     title = models.CharField(max_length=50)
+    project = models.ForeignKey(Project, on_delete=models.CASCADE, null=True, blank=True, related_name="modules")
     next_mod = models.OneToOneField('self', on_delete=models.SET_NULL, null=True, blank=True, related_name="prev_mod")
+    order = models.IntegerField(null=True, blank=True)
+    class Meta:
+            ordering = ['order']
 
 
     def __str__(self):
         return self.title
 
 class Comment(models.Model):
-    module = models.ForeignKey(Module, on_delete=models.CASCADE, null=True, blank=True)
+    module = models.ForeignKey(Module, on_delete=models.CASCADE, null=True, blank=True, related_name="comments")
     par_comment = models.ForeignKey('self', on_delete=models.CASCADE, null=True, blank=True, related_name="comkids")
     points = models.IntegerField(default=0)
     content = models.TextField()
@@ -35,11 +47,11 @@ class Comment(models.Model):
 class Section(models.Model):
     title = models.CharField(max_length=80)
     description = models.TextField()
-    module = models.ForeignKey(Module, on_delete=models.CASCADE)
+    module = models.ForeignKey(Module, on_delete=models.CASCADE, related_name="sections")
     order = models.IntegerField(null=True, blank=True)
 
     class Meta:
-            ordering = ['-order']
+            ordering = ['order']
 
     def __str__(self):
         return self.title

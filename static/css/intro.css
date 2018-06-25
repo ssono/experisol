@@ -5,6 +5,10 @@ h1 {
   font-weight: bold;
 }
 
+li{
+  font-size: 1.5em;
+}
+
 body {
   margin-top: 0px;
   margin-left: 0px;
@@ -27,20 +31,21 @@ body {
   font-size: 2em;
 }
 
-#explanation {
+#what {
   padding: 5%;
   background-color: white;
   display: flex;
 }
 
-#left_explanation{
+.left{
   width: 40%;
+  margin-right: 1%;
   display: inline-block;
   font-size: 3em;
   text-align: center;
 }
 
-#right_explanation{
+.right{
   width: 58%;
   float: right;
   border-left: 7px solid rgb(80, 204, 127);
@@ -48,20 +53,13 @@ body {
   text-align: justify;
 }
 
-#exp_text{
-  margin-top: 0em;
-  margin-bottom: 0em;
-  margin-left: 1%;
-  font-size: 1.5em;
-  margin-right: .5%;
-}
-
-#problem {
+ #how {
   padding: 5%;
   background-color: rgb(230, 240, 250);
   display: flex;
 }
 
+/*
 #left_problem{
   width: 60%;
   display:inline-block;
@@ -82,15 +80,15 @@ body {
   float: right;
   font-size: 3em;
   text-align: center;
-}
+} */
 
-#rules {
+#help {
   padding: 5%;
   background-color: rgb(190, 210, 220);
   display: flex;
 }
 
-#left_rules{
+/* #left_rules{
   width: 40%;
   display: inline-block;
   font-size: 3em;
@@ -111,7 +109,7 @@ body {
   margin-right: .5%;
   margin-top: 0em;
   margin-bottom: 0em;
-}
+} */
 
 #enter_container{
   text-align: center;

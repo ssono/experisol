@@ -43,84 +43,33 @@ hr {
   float: center;
 }
 
-.explanation {
+.what {
   padding: 2%;
   background-color: white;
   display: flex;
 }
 
-#left_explanation{
+.upper{
   width: 100%;
   font-size: 1.5em;
 }
 
-#right_explanation{
+.lower{
   width: 100%;
   float: center;
   border-bottom: 5px solid rgb(80, 204, 127);
-
 }
 
-#exp_text{
-  margin-top: 0em;
-  margin-bottom: 0em;
-  margin-left: 1%;
-  font-size: 1.5em;
-  margin-right: .5%;
-  text-align: justify;
-}
-
-.problem {
+.how {
   padding: 2%;
   background-color: rgb(230, 240, 250);
   display: flex;
 }
 
-#left_problem{
-  width: 100%;
-  float: center;
-  border-bottom: 5px solid rgb(80, 204, 127);
-}
-
-#right_problem{
-  width: 100%;
-  font-size: 1.5em;
-}
-
-#prob_text{
-  margin-top: 0em;
-  margin-bottom: 0em;
-  margin-left: 1%;
-  font-size: 1.5em;
-  margin-right: .5%;
-  text-align: justify;
-}
-
-
-.rules {
+.help {
   padding: 2%;
   background-color: rgb(190, 210, 220);
   display: flex;
-}
-
-#left_rules{
-  width: 100%;
-  font-size: 1.5em;
-}
-
-#right_rules{
-  width: 100%;
-  float: center;
-  border-bottom: 5px solid rgb(80, 204, 127);
-}
-
-#rule_text{
-  margin-top: 0em;
-  margin-bottom: 0em;
-  margin-left: 1%;
-  font-size: 1.5em;
-  margin-right: .5%;
-  text-align: justify;
 }
 
 #enter_container{
