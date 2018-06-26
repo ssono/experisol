@@ -68,7 +68,7 @@ class TotalStats(models.Model):
 
 class UserStats(models.Model):
     totalstats = models.ForeignKey(TotalStats, on_delete=models.CASCADE, null=True, blank=True)
-    ipHash = models.IntegerField()
+    ipHash = models.BigIntegerField()
     timeSpent = models.DurationField(default=timedelta())
     comments = models.IntegerField(default=0)
     votes = models.IntegerField(default=0)
