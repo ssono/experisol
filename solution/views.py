@@ -143,6 +143,21 @@ def comment_vote(request):
         return JsonResponse(newdata)
     return HttpResponse("Please return to the main site or I will be forced to warn you a second time!")
 
+def project_vote(request):
+    ensureTotalStats()
+    ipCheck(request)
+    addVote(request)
+    if request.method == 'POST' and request.is_ajax():
+        proj_id = request.POST['proj_id']
+        voting = Project.objects.get(pk=proj_id)
+        voting.points += 1
+
+        voting.save()
+        newdata = {}
+        newdata["points"] = voting.points
+        return JsonResponse(newdata)
+    return HttpResponse("Please return to the main site or I will be forced to warn you a second time!")
+
 def create_comment(request):
     ensureTotalStats()
     ipCheck(request)

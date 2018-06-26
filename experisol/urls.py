@@ -25,6 +25,7 @@ urlpatterns = [
     path('<int:proj_pk>/prev/<int:mod_pk>/', views.prev_mod),
     path('<int:proj_pk>/<int:mod_pk>/', views.post),
     url(r'^com_vote/$', views.comment_vote),
+    url(r'^proj_vote/$', views.project_vote),
     url(r'^create_comment/$', views.create_comment),
     url(r'^create_reply/$', views.create_reply),
 ]

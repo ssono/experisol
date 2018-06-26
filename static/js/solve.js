@@ -31,7 +31,7 @@ $(document).ready(function(){
   });
 
 
-  $(".post_up, .post_down, .post_fav").hover(function(){
+  $(".post_up, .post_fav").hover(function(){
     $(this).css("color", "rgb(210, 230, 230)");
     }, function(){
     $(this).css("color", "rgb(80, 204, 127)");
@@ -71,6 +71,16 @@ $(document).ready(function(){
     $(this).css("color", "rgb(80, 204, 127)");
   }, function(){
     $(this).css("color", "black");
+  });
+
+  $("#post_vote").on("click", ".post_up", function(){
+    var proj_id = $("#page_info").attr("proj_pk");
+    handlersOff();
+    projvote(proj_id);
+    console.log(document.getElementById("prupvote").classList);
+    document.getElementById("prupvote").classList.remove("post_up");
+    console.log(document.getElementById("prupvote").classList);
+    $(this).css("color", "rgb(210, 230, 230)");
   });
 
   $("#com_wrap").on("click", ".comment_text, .expand_wrap", function(){
@@ -119,14 +129,14 @@ $(document).ready(function(){
 
 $(document).ajaxStop(function() {
 
-    $(".comment_up, .comment_down").hover(function(){
+  $(".comment_up, .comment_down").hover(function(){
       console.log("hover");
       $(this).css("color", "rgb(80, 204, 127)");
     }, function(){
       $(this).css("color", "black");
-    });
+  });
 
-    $(".glyphicon-menu-right, .glyphicon-menu-left").hover(function(){
+  $(".glyphicon-menu-right, .glyphicon-menu-left").hover(function(){
       console.log("scroll")
       $(this).css("color", "rgb(210, 230, 230)");
     }, function(){
@@ -135,6 +145,11 @@ $(document).ajaxStop(function() {
 
   });
 
+  $(".post_up, .post_fav").hover(function(){
+      $(this).css("color", "rgb(210, 230, 230)");
+    }, function(){
+      $(this).css("color", "rgb(80, 204, 127)");
+  });
 
   function comToggle(parid) {
     console.log("comtog");
@@ -158,6 +173,20 @@ $(document).ajaxStop(function() {
       success: function(data){
         console.log(data["points"])
         $("#compoints_"+com_id).text(data["points"]);
+      }
+    });
+  }
+
+  function projvote(proj_id){
+    $.ajax({
+      type: "POST",
+      url: "/proj_vote/",
+      data: {
+          'proj_id': proj_id,
+      }, dataType: "json",
+      success: function(data){
+        console.log(data["points"])
+        $("#ppoints").text(data["points"]);
       }
     });
   }
@@ -234,11 +263,11 @@ function get_prev_mod(id){
 
 
 function handlersOff(){
-  $(".comment_down, .comment_up").off("click");
+  $(".comment_down, .comment_up, .post_up").off("click");
   $(".comment_text, .expand_wrap").off("click");
   $(".reply_wrap").off("click");
   $("#comment_form").off("submit");
-  $(".comment_up, .comment_down, .glyphicon-menu-right, .glyphicon-menu-left").off("mouseenter mouseleave");
+  $(".comment_up, .comment_down, .glyphicon-menu-right, .glyphicon-menu-left, .post_up").off("mouseenter mouseleave");
 }
 
 //go left, comments

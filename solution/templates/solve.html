@@ -44,7 +44,9 @@
         </div>
 
       <div id="section_wrap">
-        <div class = "sections" id="page_info" mod_pk="{{ current_module.pk }}" proj_pk="{{ project.pk }}"></div>
+
+        <div class="sections" id="page_info" mod_pk="{{ current_module.pk }}" proj_pk="{{ project.pk }}"></div>
+
         <div class="sections">
           <ul class="section_list">
             {% for section in sections %}
@@ -60,7 +62,7 @@
     <div id="post_data">
       <p id="post_vote">
           <span id="ppoints">{{ project.points }}</span>
-          <span class="glyphicon glyphicon-menu-up post_up"></span>
+          <span id="prupvote" class="glyphicon glyphicon-menu-up post_up"></span>
           <span class="glyphicon glyphicon-star-empty post_fav"></span>
       </p>
     </div>
