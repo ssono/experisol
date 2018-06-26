@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, Http404, HttpResponseRedirect, FileResponse, JsonResponse
-from solution.models import Section, Module, Comment, TotalStats, UserStats
+from solution.models import Section, Module, Comment, TotalStats, UserStats, Project
 from django.core.exceptions import ObjectDoesNotExist
 from datetime import datetime, timedelta, timezone
 from ipware import get_client_ip
@@ -74,17 +74,18 @@ def intro(request):
     return render(request, html, {})
 
 
-def post(request, mod_pk):
+def post(request, proj_pk,  mod_pk):
     ensureTotalStats()
     ipCheck(request)
-    modules = Module.objects.all()
+    proj = Project.objects.get(pk=proj_pk)
+    modules = proj.modules.all()
     current_module = Module.objects.get(pk=mod_pk)
     html = 'solve.html'
     if request.user_agent.is_mobile:
         html = 'mobsolve.html'
-    return render(request, html, {'modules': modules, 'sections': current_module.sections.all(), 'comments': current_module.comments.all(), 'current_module': current_module,})
+    return render(request, html, {'modules': modules, 'sections': current_module.sections.all(), 'comments': current_module.comments.all(), 'current_module': current_module, 'project': proj})
 
-def next_mod(request, mod_pk):
+def next_mod(request, proj_pk, mod_pk):
     ensureTotalStats()
     ipCheck(request)
     modules = Module.objects.all()
@@ -94,9 +95,9 @@ def next_mod(request, mod_pk):
             current_module = current_module.next_mod
         newdata = {'new_pk': str(current_module.pk)}
         return JsonResponse(newdata)
-    return HttpResponse("<a href='/solution/'"+ mod_pk + "/><h1>Return</h1></a>")
+    return HttpResponse("<a href='/"+ str(proj_pk) + "/" + str(mod_pk) + "'/><h1>Return</h1></a>")
 
-def prev_mod(request, mod_pk):
+def prev_mod(request, proj_pk, mod_pk):
     ensureTotalStats()
     ipCheck(request)
     modules = Module.objects.all()
@@ -108,7 +109,7 @@ def prev_mod(request, mod_pk):
             pass
         newdata = {'new_pk': str(current_module.pk)}
         return JsonResponse(newdata)
-    return HttpResponse("<a href='/solution/'"+ mod_pk + "/><h1>Return</h1></a>")
+    return HttpResponse("<a href='/"+ str(proj_pk) + "/" + str(mod_pk) + "'/><h1>Return</h1></a>")
 
 
 

@@ -163,8 +163,9 @@ $(document).ajaxStop(function() {
   }
 
 function create_comment(){
-  var id = $("#current_module").attr("pkid");
-  var current_url = "/solution/"+id+"/";
+  var mod_id = $("#page_info").attr("mod_pk");
+  var proj_id = $("#page_info").attr("proj_pk");
+  var current_url = "/"+proj_id+"/"+mod_id+"/";
   $.ajax({
     type: "POST",
     url: "/create_comment/",
@@ -179,8 +180,9 @@ function create_comment(){
 }
 
 function create_reply(com_id){
-  var mod_id = $("#current_module").attr("pkid");
-  var current_url = "/solution/"+mod_id+"/";
+  var mod_id = $("#page_info").attr("mod_pk");
+  var proj_id = $("#page_info").attr("proj_pk");
+  var current_url = "/"+proj_id+"/"+mod_id+"/";
   $.ajax({
     type: "POST",
     url: "/create_reply/",
@@ -195,12 +197,13 @@ function create_reply(com_id){
 }
 
 function get_next_mod(id){
-  var get_next = "/solution/next/" + id + "/"
+  var proj_id = $("#page_info").attr("proj_pk");
+  var get_next = "/"+proj_id+"/"+"next/" + id + "/"
   $.ajax({
     type: "GET",
     url: get_next,
     success: function(data){
-      var mod_url = "/solution/"+data['new_pk'] + "/";
+      var mod_url = "/"+proj_id+"/"+data['new_pk'] + "/";
       $("#mod_bar_wrap").load(mod_url+ " .module_bar");
       $("#com_wrap").load(mod_url + " .comments");
       $("#section_wrap").load(mod_url + " .sections");
@@ -210,12 +213,13 @@ function get_next_mod(id){
 }
 
 function get_prev_mod(id){
-  var get_prev = "/solution/prev/" + id + "/"
+  var proj_id = $("#page_info").attr("proj_pk");
+  var get_prev = "/"+proj_id+"/"+"prev/" + id + "/"
   $.ajax({
     type: "GET",
     url: get_prev,
     success: function(data){
-      var mod_url = "/solution/"+data['new_pk'] + "/";
+      var mod_url = "/"+proj_id+"/"+data['new_pk'] + "/";
       $("#mod_bar_wrap").load(mod_url+ " .module_bar");
       $("#com_wrap").load(mod_url + " .comments");
       $("#section_wrap").load(mod_url + " .sections");

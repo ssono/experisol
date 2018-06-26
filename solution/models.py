@@ -19,6 +19,9 @@ class Project(models.Model):
     next_proj = models.OneToOneField('self', on_delete=models.SET_NULL, null=True, blank=True, related_name="prev_proj")
     points = models.IntegerField(default=0)
 
+    def __str__(self):
+        return self.title
+
 
 class Module(models.Model):
     title = models.CharField(max_length=50)

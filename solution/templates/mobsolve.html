@@ -18,14 +18,17 @@
 
   {% load solution_extras %}
 </head>
+
+<div id="page_info" mod_pk="{{ current_module.pk }}" proj_pk="{{ project.pk }}"></div>
+
 <body>
   <div class="announce_bar">
-    <a href="/solution/1/"><h1 id="logo">Solvent</h1></a>
+    <a href="/1/1/"><h1 id="logo">Solvent</h1></a>
     <p id="contact">solvent.solute.solution@gmail.com</p>
   </div>
   <div id="frame">
-    <h1 id="post_title">Solvent: Collaborative Brainstorming</h1>
-    <p id="post_author">By: ssono</p>
+    <h1 id="post_title">{{ project.title }}</h1>
+    <p id="post_author">By: {{ project.author }}</p>
 
       <div class="post_content">
 
@@ -54,7 +57,7 @@
     <!--<hr id="break">!-->
     <div class="post_data">
       <p class="post_vote">
-        1999
+        {{ project.points }}
         <span class="glyphicon glyphicon-menu-up post_up"></span>
         <span class="glyphicon glyphicon-star-empty post_fav"></span>
       </p>
@@ -64,7 +67,7 @@
   <div id="com_wrap">
     <div class="comments">
 
-      <form method="POST" action="/solution/{{ current_module.pk }}/" id="comment_form" module="{{ current_module.pk }}">
+      <form method="POST" action="/{{ project.pk }}/{{ current_module.pk }}/" id="comment_form" module="{{ current_module.pk }}">
         <textarea name="new_comment" id="comment_area" placeholder="What you got?"></textarea>
         <input type="submit" value="Comment" id="comment_submit">
         {% csrf_token %}
@@ -95,7 +98,7 @@
         </div>
 
         <div class="reply_toggle hiding" id="reply_{{ comment.pk }}">
-          <form method="POST" action="/solution/{{ current_module.pk }}/" class="reply_form" com_par="{{ comment.pk }}">
+          <form method="POST" action="/{{ project.pk }}/{{ current_module.pk }}/" class="reply_form" com_par="{{ comment.pk }}">
             <textarea name="new_reply" class="reply_area" id="reply_area{{ comment.pk }}" placeholder="What you got?"></textarea>
             <input type="submit" value="Reply" class="reply_submit">
             {% csrf_token %}

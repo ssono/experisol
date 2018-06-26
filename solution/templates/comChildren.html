@@ -28,7 +28,7 @@
     </li>
 
     <div class="reply_toggle hiding" id="reply_{{ child.pk }}">
-      <form method="POST" action="/solution/{{ current_module.pk }}/" class="reply_form" com_par="{{ child.pk }}">
+      <form method="POST" action="/{{ project.pk }}/{{ current_module.pk }}/" class="reply_form" com_par="{{ child.pk }}">
         <textarea name="new_reply" class="reply_area" id="reply_area{{ child.pk }}" placeholder="What you got?"></textarea>
         <input type="submit" value="Reply" class="reply_submit">
         {% csrf_token %}

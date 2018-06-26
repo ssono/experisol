@@ -4,7 +4,7 @@ from solution.models import Module, Comment, Section, TotalStats, UserStats, Pro
 from django.contrib import admin
 
 class ModuleAdmin(admin.ModelAdmin):
-    list_display = ('title', 'order',  'pk')
+    list_display = ('title', 'order', 'project',  'pk')
 
 class SectionAdmin(admin.ModelAdmin):
     list_display = ('title', 'order', 'module')
