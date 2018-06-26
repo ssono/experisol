@@ -208,6 +208,7 @@ function get_next_mod(id){
       $("#com_wrap").load(mod_url + " .comments");
       $("#section_wrap").load(mod_url + " .sections");
       $("#auth_title").load(mod_url + " .change_mod");
+      $("#ppoints").load(mod_url + " #ppoints");
       history.pushState(null,null, mod_url);
     }
   });
@@ -225,6 +226,7 @@ function get_prev_mod(id){
       $("#com_wrap").load(mod_url + " .comments");
       $("#section_wrap").load(mod_url + " .sections");
       $("#auth_title").load(mod_url + " .change_mod");
+      $("#ppoints").load(mod_url + " #ppoints");
       history.pushState(null,null, mod_url);
     }
   });
