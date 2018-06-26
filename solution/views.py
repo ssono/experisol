@@ -98,8 +98,6 @@ def next_mod(request, proj_pk, mod_pk):
             modules = project.modules.all()
             if len(modules) > 0:
                 current_module = modules[0]
-            else:
-                project = Project.objects.get(pk=proj_pk)
         newdata = {'mod_pk': str(current_module.pk), 'proj_pk': str(project.pk)}
         return JsonResponse(newdata)
     return HttpResponse("<a href='/"+ str(proj_pk) + "/" + str(mod_pk) + "'/><h1>Return</h1></a>")
@@ -118,6 +116,8 @@ def prev_mod(request, proj_pk, mod_pk):
                 modules = project.modules.all()
                 if len(modules) > 0:
                     current_module = modules[len(modules) - 1]
+                else:
+                    project = Project.objects.get(pk=proj_pk)
             except Project.prev_proj.RelatedObjectDoesNotExist:
                 pass
 
