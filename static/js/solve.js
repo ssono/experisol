@@ -203,10 +203,11 @@ function get_next_mod(id){
     type: "GET",
     url: get_next,
     success: function(data){
-      var mod_url = "/"+proj_id+"/"+data['new_pk'] + "/";
+      var mod_url = "/"+data['proj_pk']+"/"+data['mod_pk'] + "/";
       $("#mod_bar_wrap").load(mod_url+ " .module_bar");
       $("#com_wrap").load(mod_url + " .comments");
       $("#section_wrap").load(mod_url + " .sections");
+      $("#auth_title").load(mod_url + " .change_mod");
       history.pushState(null,null, mod_url);
     }
   });
@@ -219,10 +220,11 @@ function get_prev_mod(id){
     type: "GET",
     url: get_prev,
     success: function(data){
-      var mod_url = "/"+proj_id+"/"+data['new_pk'] + "/";
+      var mod_url = "/"+data['proj_pk']+"/"+data['mod_pk'] + "/";
       $("#mod_bar_wrap").load(mod_url+ " .module_bar");
       $("#com_wrap").load(mod_url + " .comments");
       $("#section_wrap").load(mod_url + " .sections");
+      $("#auth_title").load(mod_url + " .change_mod");
       history.pushState(null,null, mod_url);
     }
   });

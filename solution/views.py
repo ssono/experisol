@@ -88,26 +88,38 @@ def post(request, proj_pk,  mod_pk):
 def next_mod(request, proj_pk, mod_pk):
     ensureTotalStats()
     ipCheck(request)
-    modules = Module.objects.all()
     current_module = Module.objects.get(pk=mod_pk)
     if request.is_ajax():
+        project = Project.objects.get(pk=proj_pk)
         if current_module.next_mod != None:
             current_module = current_module.next_mod
-        newdata = {'new_pk': str(current_module.pk)}
+        elif project.next_proj != None:
+            project = project.next_proj
+            modules = project.modules.all()
+            if len(modules) > 0:
+                current_module = modules[0]
+        newdata = {'mod_pk': str(current_module.pk), 'proj_pk': str(project.pk)}
         return JsonResponse(newdata)
     return HttpResponse("<a href='/"+ str(proj_pk) + "/" + str(mod_pk) + "'/><h1>Return</h1></a>")
 
 def prev_mod(request, proj_pk, mod_pk):
     ensureTotalStats()
     ipCheck(request)
-    modules = Module.objects.all()
     current_module = Module.objects.get(pk=mod_pk)
     if request.is_ajax():
+        project = Project.objects.get(pk=proj_pk)
         try:
             current_module = current_module.prev_mod
         except Module.prev_mod.RelatedObjectDoesNotExist:
-            pass
-        newdata = {'new_pk': str(current_module.pk)}
+            try:
+                project = project.prev_proj
+                modules = project.modules.all()
+                if len(modules) > 0:
+                    current_module = modules[len(modules) - 1]
+            except Project.prev_proj.RelatedObjectDoesNotExist:
+                pass
+
+        newdata = {'mod_pk': str(current_module.pk), 'proj_pk': str(project.pk)}
         return JsonResponse(newdata)
     return HttpResponse("<a href='/"+ str(proj_pk) + "/" + str(mod_pk) + "'/><h1>Return</h1></a>")
 

@@ -19,16 +19,16 @@
   {% load solution_extras %}
 </head>
 
-<div id="page_info" mod_pk="{{ current_module.pk }}" proj_pk="{{ project.pk }}"></div>
-
 <body>
   <div class="announce_bar">
     <a href="/1/1/"><h1 id="logo">Solvent</h1></a>
     <p id="contact">solvent.solute.solution@gmail.com</p>
   </div>
   <div id="frame">
-    <h1 id="post_title">{{ project.title }}</h1>
-    <p id="post_author">By: {{ project.author }}</p>
+    <div id="auth_title">
+      <h1 id="post_title" class="change_mod">{{ project.title }}</h1>
+      <p id="post_author" class="change_mod">By: {{ project.author }}</p>
+    </div>
 
       <div class="post_content">
 
@@ -43,6 +43,8 @@
 
 
       <div id="section_wrap">
+        <div class = "sections" id="page_info" mod_pk="{{ current_module.pk }}" proj_pk="{{ project.pk }}"></div>
+        <div id="page_info" mod_pk="{{ current_module.pk }}" proj_pk="{{ project.pk }}"></div>
         <div class="sections">
           <ul class="section_list">
             {% for section in sections %}
