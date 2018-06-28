@@ -57,13 +57,15 @@ $(document).ready(function(){
   });
 
   $(document).keydown(function(e){
-    var id = $("#current_module").attr("pkid");
-    if (e.keyCode == 39){
-      get_next_mod(id);
-    } if (e.keyCode == 37){
-      get_prev_mod(id);
+    if(document.getElementById("comment_area").value == ''){
+      var id = $("#current_module").attr("pkid");
+      if (e.keyCode == 39){
+        get_next_mod(id);
+      } if (e.keyCode == 37){
+        get_prev_mod(id);
+      }
+      console.log("change_mod");
     }
-    console.log("change_mod");
   });
 
   $(".comment_up, .comment_down").hover(function(){
