@@ -49,6 +49,9 @@ class Project(models.Model):
     def __str__(self):
         return self.title
 
+    def get_authors(self):
+        return "\n".join([a.user.username for a in self.authors.all()])
+
 
 class Module(models.Model):
     title = models.CharField(max_length=50)
