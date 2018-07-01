@@ -80,10 +80,11 @@ def post(request, proj_pk,  mod_pk):
     proj = Project.objects.get(pk=proj_pk)
     modules = proj.modules.all()
     current_module = Module.objects.get(pk=mod_pk)
+    authors = " ".join([p.user.username for p in proj.authors.all()])
     html = 'solve.html'
     if request.user_agent.is_mobile:
         html = 'mobsolve.html'
-    return render(request, html, {'modules': modules, 'sections': current_module.sections.all(), 'comments': current_module.comments.all(), 'current_module': current_module, 'project': proj})
+    return render(request, html, {'modules': modules, 'sections': current_module.sections.all(), 'comments': current_module.comments.all(), 'current_module': current_module, 'project': proj, 'authors': authors})
 
 def next_mod(request, proj_pk, mod_pk):
     ensureTotalStats()

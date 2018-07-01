@@ -41,7 +41,7 @@ class Profile(models.Model):
 
 class Project(models.Model):
     title = models.CharField(max_length=100)
-    authors = models.ManyToManyField(Profile, null=True, blank=True, related_name="projects")
+    authors = models.ManyToManyField(Profile, blank=True, related_name="projects")
     next_proj = models.OneToOneField('self', on_delete=models.SET_NULL, null=True, blank=True, related_name="prev_proj")
     points = models.IntegerField(default=0)
     created = models.DateField(default=date.today, null=True, blank=True)
