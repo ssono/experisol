@@ -18,6 +18,7 @@ class Project(models.Model):
     author = models.CharField(max_length=50)
     next_proj = models.OneToOneField('self', on_delete=models.SET_NULL, null=True, blank=True, related_name="prev_proj")
     points = models.IntegerField(default=0)
+    created = models.DateField(default=date.today, null=True, blank=True)
 
     def __str__(self):
         return self.title
@@ -40,6 +41,7 @@ class Comment(models.Model):
     par_comment = models.ForeignKey('self', on_delete=models.CASCADE, null=True, blank=True, related_name="comkids")
     points = models.IntegerField(default=0)
     content = models.TextField()
+    created = models.DateField(default=date.today, null=True, blank=True)
 
     class Meta:
         ordering = ['-points']
@@ -66,7 +68,7 @@ class TotalStats(models.Model):
     totalTime = models.DurationField(default=timedelta())
     avgTime = models.DurationField(default=timedelta())
 
-class UserStats(models.Model):
+class SessionStats(models.Model):
     totalstats = models.ForeignKey(TotalStats, on_delete=models.CASCADE, null=True, blank=True)
     ipHash = models.BigIntegerField()
     timeSpent = models.DurationField(default=timedelta())

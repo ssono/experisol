@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
-from solution.models import Module, Comment, Section, TotalStats, UserStats, Project
+from solution.models import Module, Comment, Section, TotalStats, SessionStats, Project
 from django.contrib import admin
 
 class ModuleAdmin(admin.ModelAdmin):
@@ -15,7 +15,7 @@ class CommentAdmin(admin.ModelAdmin):
 class TotalStatsAdmin(admin.ModelAdmin):
     list_display = ('uniqueUsers', 'totalComments', 'totalVotes', 'totalTime', 'avgTime')
 
-class UserStatsAdmin(admin.ModelAdmin):
+class SessionStatsAdmin(admin.ModelAdmin):
     list_display = ('ipHash', 'timeSpent', 'comments', 'votes')
 
 class ProjectAdmin(admin.ModelAdmin):
@@ -25,5 +25,5 @@ admin.site.register(Module, ModuleAdmin)
 admin.site.register(Comment, CommentAdmin)
 admin.site.register(Section, SectionAdmin)
 admin.site.register(TotalStats, TotalStatsAdmin)
-admin.site.register(UserStats, UserStatsAdmin)
+admin.site.register(SessionStats, SessionStatsAdmin)
 admin.site.register(Project, ProjectAdmin)

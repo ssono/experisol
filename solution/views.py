@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, Http404, HttpResponseRedirect, FileResponse, JsonResponse
-from solution.models import Section, Module, Comment, TotalStats, UserStats, Project
+from solution.models import Section, Module, Comment, TotalStats, SessionStats, Project
 from django.core.exceptions import ObjectDoesNotExist
 from datetime import datetime, timedelta, timezone
 from ipware import get_client_ip
@@ -12,7 +12,7 @@ from ipware import get_client_ip
 
 def newUser(ipHash):
     tstats = TotalStats.objects.all()[0]
-    user = UserStats(ipHash=ipHash, lastAction=datetime.now(timezone.utc), totalstats=tstats)
+    user = SessionStats(ipHash=ipHash, lastAction=datetime.now(timezone.utc), totalstats=tstats)
     user.save()
     tstats.uniqueUsers += 1
     tstats.save()
@@ -35,7 +35,7 @@ def ipCheck(request):
 def logUserInteraction(ipHash):
     tstats = TotalStats.objects.all()[0]
     try:
-        user = UserStats.objects.get(ipHash=ipHash)
+        user = SessionStats.objects.get(ipHash=ipHash)
     except ObjectDoesNotExist:
         newUser(ipHash)
         return
@@ -199,7 +199,7 @@ def addVote(request):
     ip = get_client_ip(request)
     if ip != None:
         ipHash = hash(ip)
-        user = UserStats.objects.get(ipHash=ipHash)
+        user = SessionStats.objects.get(ipHash=ipHash)
         user.votes += 1
         user.save()
     tstats = TotalStats.objects.all()[0]
@@ -210,7 +210,7 @@ def addComment(request):
     ip = get_client_ip(request)
     if ip != None:
         ipHash = hash(ip)
-        user = UserStats.objects.get(ipHash=ipHash)
+        user = SessionStats.objects.get(ipHash=ipHash)
         user.comments += 1
         user.save()
     tstats = TotalStats.objects.all()[0]
