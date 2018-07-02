@@ -5,12 +5,15 @@ from django.contrib import admin
 
 class ModuleAdmin(admin.ModelAdmin):
     list_display = ('title', 'order', 'project',  'pk')
+    list_filter = ('project',)
 
 class SectionAdmin(admin.ModelAdmin):
     list_display = ('title', 'order', 'module')
+    list_filter = ('module',)
 
 class CommentAdmin(admin.ModelAdmin):
     list_display = ('author', 'points','module', 'par_comment', 'content', 'pk')
+    list_filter = ('module', 'par_comment',)
 
 class TotalStatsAdmin(admin.ModelAdmin):
     list_display = ('uniqueUsers', 'totalComments', 'totalVotes', 'totalTime', 'avgTime')
