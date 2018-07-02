@@ -19,7 +19,7 @@ class SessionStatsAdmin(admin.ModelAdmin):
     list_display = ('ipHash', 'timeSpent', 'comments', 'votes')
 
 class ProjectAdmin(admin.ModelAdmin):
-    list_display = ('title', 'get_authors', 'points', 'pk')
+    list_display = ('title', 'get_authors', 'created', 'points', 'pk')
 
 class ProfileAdmin(admin.ModelAdmin):
     list_display = ('user', 'joined', 'points', 'email')
