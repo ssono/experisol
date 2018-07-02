@@ -223,7 +223,7 @@ hr{
 
 .comment_author{
   color: rgb(0,30,50);
-  font-size: 1.75em;
+  font-weight: bold;
 }
 
 .reply_toggle{
