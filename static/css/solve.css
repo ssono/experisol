@@ -221,6 +221,11 @@ hr{
   border-bottom-right-radius: 10px;
 }
 
+.comment_author{
+  color: rgb(0,30,50);
+  font-size: 1.75em;
+}
+
 .reply_toggle{
   margin-left: 1%;
 }

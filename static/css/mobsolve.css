@@ -203,6 +203,10 @@ hr{
   border-radius: 5px;
 }
 
+.comment_author{
+  color: rgb(0,30,50);
+}
+
 .reply_toggle{
   margin-left: 1%;
 }

@@ -4,6 +4,7 @@
     {% for child in children %}
     <li class="child_li">
       <div class="comm par{{ child.par_comment.pk }} hiding" id="com_{{ child.pk }}" pkid="{{ child.pk }}">
+        <p class="comment_author">{{ child.author.user.username }}</p>
         <p class="comment_text" pkid="{{ child.pk }}">{{ child.content|linebreaks }}</p>
 
         <div class="comment_points_wrap">
