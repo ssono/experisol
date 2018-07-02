@@ -128,3 +128,13 @@ body {
   background-color: rgb(5, 55, 75);
   font-size: 2.5em;
 }
+
+#credits{
+  background-color: rgb(5, 55, 75);
+  color: #999;
+  margin: 0px;
+}
+
+.cred{
+  margin: 0px;
+}
