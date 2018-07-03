@@ -7,8 +7,18 @@ from solution.models import Section, Module, Comment, TotalStats, SessionStats, 
 from django.core.exceptions import ObjectDoesNotExist
 from datetime import datetime, timedelta, timezone
 from ipware import get_client_ip
+from django.core.mail import send_mail
+from django.conf import settings
+
 
 #Stats views
+def email(request):
+    subject = 'testing email'
+    message = 'test'
+    email_from = settings.EMAIL_HOST_USER
+    recipient_list = ['ssono4013@gmail.com',]
+    send_mail( subject, message, email_from, recipient_list )
+    return redirect('/')
 
 def newUser(ipHash):
     tstats = TotalStats.objects.all()[0]
