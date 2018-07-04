@@ -1,0 +1,34 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <link href="https://fonts.googleapis.com/css?family=Poiret+One|Raleway" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  <link rel="shortcut icon" href="/static/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/static/favicon.ico" type="image/x-icon">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="/static/css/email.css"></link>
+  <script src="/static/js/email.js"></script>
+  <title>Solvent</title>
+</head>
+<body>
+  <div id="updated">
+    <h1 id="question">Want to stay updated?</h1>
+
+    <br>
+    <hr>
+    <br>
+
+    <form method="POST" action="/email/" id="email_form">
+      <input id="email_field" type="text" name="email" placeholder="Email" required>
+      <br>
+      <br>
+      <input id="email_submit" type="submit" name="submit" value="Submit">
+      {% csrf_token %}
+    </form>
+  </div>
+</body>

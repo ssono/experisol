@@ -13,12 +13,15 @@ from django.conf import settings
 
 #Stats views
 def email(request):
-    subject = 'testing email'
-    message = 'test'
-    email_from = settings.EMAIL_HOST_USER
-    recipient_list = ['ssono4013@gmail.com',]
-    send_mail( subject, message, email_from, recipient_list )
-    return redirect('/')
+    # subject = 'testing email'
+    # message = 'test'
+    # email_from = settings.EMAIL_HOST_USER
+    # recipient_list = ['ssono4013@gmail.com',]
+    # send_mail( subject, message, email_from, recipient_list )
+    if request.method == 'GET':
+        return render(request, 'email.html', {})
+    else:
+        return HttpResponse("post")
 
 def newUser(ipHash):
     tstats = TotalStats.objects.all()[0]
