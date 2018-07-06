@@ -247,13 +247,20 @@ function get_next_mod(id){
     type: "GET",
     url: get_next,
     success: function(data){
-      var mod_url = "/"+data['proj_pk']+"/"+data['mod_pk'] + "/";
-      $("#mod_bar_wrap").load(mod_url+ " .module_bar");
-      $("#com_wrap").load(mod_url + " .comments");
-      $("#section_wrap").load(mod_url + " .sections");
-      $("#auth_title").load(mod_url + " .change_mod");
-      $("#ppoints").load(mod_url + " #ppoints");
-      history.pushState(null,null, mod_url);
+      var proj = data['proj_pk'];
+      var mod = data['mod_pk'];
+      if(proj == '-1'){
+        console.log("wow");
+        window.location.href = '/email/';
+      } else{
+        var mod_url = "/"+proj+"/"+mod + "/";
+        $("#mod_bar_wrap").load(mod_url+ " .module_bar");
+        $("#com_wrap").load(mod_url + " .comments");
+        $("#section_wrap").load(mod_url + " .sections");
+        $("#auth_title").load(mod_url + " .change_mod");
+        $("#ppoints").load(mod_url + " #ppoints");
+        history.pushState(null,null, mod_url);
+      }
     }
   });
 }

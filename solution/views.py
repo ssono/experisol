@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, Http404, HttpResponseRedirect, FileResponse, JsonResponse
-from solution.models import Section, Module, Comment, TotalStats, SessionStats, Project
+from solution.models import Section, Module, Comment, TotalStats, SessionStats, Project, Email
 from django.core.exceptions import ObjectDoesNotExist
 from datetime import datetime, timedelta, timezone
 from ipware import get_client_ip
@@ -13,15 +13,21 @@ from django.conf import settings
 
 #Stats views
 def email(request):
-    # subject = 'testing email'
-    # message = 'test'
-    # email_from = settings.EMAIL_HOST_USER
-    # recipient_list = ['ssono4013@gmail.com',]
-    # send_mail( subject, message, email_from, recipient_list )
     if request.method == 'GET':
         return render(request, 'email.html', {})
+    elif request.is_ajax() and request.method == 'POST':
+        new_email = request.POST['new_email']
+        # subject = 'Thank You'
+        # message = 'Hello!\n\n Thanks for showing interest in Solvent. I'll let you know when we launch \n\n -ssono'
+        # email_from = settings.EMAIL_HOST_USER
+        # recipient_list = [new_email,]
+        # send_mail( subject, message, email_from, recipient_list )
+
+        new_em_obj = Email.objects.create(email=new_email)
+        return render(request, 'email.html', {})
     else:
-        return HttpResponse("post")
+        return HttpResponse("How did you get here?")
+
 
 def newUser(ipHash):
     tstats = TotalStats.objects.all()[0]
@@ -103,17 +109,24 @@ def next_mod(request, proj_pk, mod_pk):
     ensureTotalStats()
     ipCheck(request)
     current_module = Module.objects.get(pk=mod_pk)
+    project = Project.objects.get(pk=proj_pk)
     if request.is_ajax():
-        project = Project.objects.get(pk=proj_pk)
         if current_module.next_mod != None:
             current_module = current_module.next_mod
+            newdata = {'mod_pk': str(current_module.pk), 'proj_pk': str(project.pk)}
+            return JsonResponse(newdata)
         elif project.next_proj != None:
             project = project.next_proj
             modules = project.modules.all()
             if len(modules) > 0:
                 current_module = modules[0]
-        newdata = {'mod_pk': str(current_module.pk), 'proj_pk': str(project.pk)}
-        return JsonResponse(newdata)
+            newdata = {'mod_pk': str(current_module.pk), 'proj_pk': str(project.pk)}
+            return JsonResponse(newdata)
+        else:
+            newdata = {'mod_pk': '-1', 'proj_pk': '-1'}
+            return JsonResponse(newdata)
+
+
     return HttpResponse("<a href='/"+ str(proj_pk) + "/" + str(mod_pk) + "'/><h1>Return</h1></a>")
 
 def prev_mod(request, proj_pk, mod_pk):

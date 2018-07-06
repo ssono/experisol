@@ -105,3 +105,6 @@ class SessionStats(models.Model):
     comments = models.IntegerField(default=0)
     votes = models.IntegerField(default=0)
     lastAction = models.DateTimeField()
+
+class Email(models.Model):
+    email = models.EmailField()

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
-from solution.models import Module, Comment, Section, TotalStats, SessionStats, Project, Profile
+from solution.models import Module, Comment, Section, TotalStats, SessionStats, Project, Profile, Email
 from django.contrib import admin
 
 class ModuleAdmin(admin.ModelAdmin):
@@ -26,6 +26,10 @@ class ProjectAdmin(admin.ModelAdmin):
 
 class ProfileAdmin(admin.ModelAdmin):
     list_display = ('user', 'joined', 'points', 'email')
+
+class EmailAdmin(admin.ModelAdmin):
+    list_display = ('email',)
+
 # Register your models here.
 admin.site.register(Module, ModuleAdmin)
 admin.site.register(Comment, CommentAdmin)
@@ -34,3 +38,4 @@ admin.site.register(TotalStats, TotalStatsAdmin)
 admin.site.register(SessionStats, SessionStatsAdmin)
 admin.site.register(Project, ProjectAdmin)
 admin.site.register(Profile, ProfileAdmin)
+admin.site.register(Email, EmailAdmin)
