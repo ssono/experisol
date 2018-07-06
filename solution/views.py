@@ -20,9 +20,9 @@ def email(request):
         print(html)
         return render(request, html, {})
     elif request.is_ajax() and request.method == 'POST':
-        new_email = request.POST['new_email']
+        # new_email = request.POST['new_email']
         # subject = 'Thank You'
-        # message = 'Hello!\n\n Thanks for showing interest in Solvent. I'll let you know when we launch \n\n -ssono'
+        # message = "Hello!\n\n Thanks for showing interest in Solvent. I'll let you know when we launch \n\n -ssono"
         # email_from = settings.EMAIL_HOST_USER
         # recipient_list = [new_email,]
         # send_mail( subject, message, email_from, recipient_list )
@@ -92,8 +92,9 @@ def newAvgTime():
 
 # Create your views here.
 def intro(request):
-    ensureTotalStats()
-    ipCheck(request)
+    if not request.user.is_staff:
+        ensureTotalStats()
+        ipCheck(request)
     html = 'intro.html'
     if request.user_agent.is_mobile:
         html = 'mobintro.html'
@@ -101,8 +102,9 @@ def intro(request):
 
 
 def post(request, proj_pk,  mod_pk):
-    ensureTotalStats()
-    ipCheck(request)
+    if not request.user.is_staff:
+        ensureTotalStats()
+        ipCheck(request)
     proj = Project.objects.get(pk=proj_pk)
     modules = proj.modules.all()
     current_module = Module.objects.get(pk=mod_pk)
@@ -113,8 +115,9 @@ def post(request, proj_pk,  mod_pk):
     return render(request, html, {'modules': modules, 'sections': current_module.sections.all(), 'comments': current_module.comments.all(), 'current_module': current_module, 'project': proj, 'authors': authors})
 
 def next_mod(request, proj_pk, mod_pk):
-    ensureTotalStats()
-    ipCheck(request)
+    if not request.user.is_staff:
+        ensureTotalStats()
+        ipCheck(request)
     current_module = Module.objects.get(pk=mod_pk)
     project = Project.objects.get(pk=proj_pk)
     if request.is_ajax():
@@ -137,8 +140,9 @@ def next_mod(request, proj_pk, mod_pk):
     return HttpResponse("<a href='/"+ str(proj_pk) + "/" + str(mod_pk) + "'/><h1>Return</h1></a>")
 
 def prev_mod(request, proj_pk, mod_pk):
-    ensureTotalStats()
-    ipCheck(request)
+    if not request.user.is_staff:
+        ensureTotalStats()
+        ipCheck(request)
     current_module = Module.objects.get(pk=mod_pk)
     if request.is_ajax():
         project = Project.objects.get(pk=proj_pk)
@@ -162,9 +166,10 @@ def prev_mod(request, proj_pk, mod_pk):
 
 
 def comment_vote(request):
-    ensureTotalStats()
-    ipCheck(request)
-    addVote(request)
+    if not request.user.is_staff:
+        ensureTotalStats()
+        ipCheck(request)
+        addVote(request)
     if request.method == 'POST' and request.is_ajax():
         com_id = request.POST['com_id']
         weight = request.POST['weight']
@@ -178,9 +183,10 @@ def comment_vote(request):
     return HttpResponse("Please return to the main site or I will be forced to warn you a second time!")
 
 def project_vote(request):
-    ensureTotalStats()
-    ipCheck(request)
-    addVote(request)
+    if not request.user.is_staff:
+        ensureTotalStats()
+        ipCheck(request)
+        addVote(request)
     if request.method == 'POST' and request.is_ajax():
         proj_id = request.POST['proj_id']
         voting = Project.objects.get(pk=proj_id)
@@ -193,9 +199,10 @@ def project_vote(request):
     return HttpResponse("Please return to the main site or I will be forced to warn you a second time!")
 
 def create_comment(request):
-    ensureTotalStats()
-    ipCheck(request)
-    addComment(request)
+    if not request.user.is_staff:
+        ensureTotalStats()
+        ipCheck(request)
+        addComment(request)
     if request.method =='POST' and request.is_ajax():
         text = str(request.POST['text'])
         if text != "":
@@ -211,9 +218,10 @@ def create_comment(request):
     return HttpResponse("Weird")
 
 def create_reply(request):
-    ensureTotalStats()
-    ipCheck(request)
-    addComment(request)
+    if not request.user.is_staff:
+        ensureTotalStats()
+        ipCheck(request)
+        addComment(request)
     if request.method =='POST' and request.is_ajax():
         text = str(request.POST['text'])
         if text != "":
