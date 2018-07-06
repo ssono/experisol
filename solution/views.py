@@ -14,7 +14,11 @@ from django.conf import settings
 #Stats views
 def email(request):
     if request.method == 'GET':
-        return render(request, 'email.html', {})
+        html = 'email.html'
+        if request.user_agent.is_mobile:
+            html = 'mobemail.html'
+        print(html)
+        return render(request, html, {})
     elif request.is_ajax() and request.method == 'POST':
         new_email = request.POST['new_email']
         # subject = 'Thank You'
@@ -24,7 +28,10 @@ def email(request):
         # send_mail( subject, message, email_from, recipient_list )
 
         new_em_obj = Email.objects.create(email=new_email)
-        return render(request, 'email.html', {})
+        html = 'email.html'
+        if request.user_agent.is_mobile:
+            html = 'mobemail.html'
+        return render(request, html, {})
     else:
         return HttpResponse("How did you get here?")
 
