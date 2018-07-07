@@ -8,7 +8,7 @@ body {
 
 p {
   margin: 1% 2% !important;
-  font-size: 1.3em;
+  font-size: 1.25em;
 }
 
 hr{
@@ -139,7 +139,8 @@ hr{
   font-size: 1.5em;
 }
 
-.sect_description {
+.sect{
+  font-size: 1em;
 }
 
 #post_data{
@@ -264,7 +265,7 @@ hr{
   background-color: white;
   padding: 1%;
   border-left: 7px solid rgb(0,220,130);
-  font-size: inherit;
+  font-size: 1.1em;
 }
 
 .comment_points{
