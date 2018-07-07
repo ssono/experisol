@@ -8,7 +8,7 @@ body {
 
 p {
   margin: 1% 2% !important;
-  font-size: 1.25em;
+  font-size: 1.3em;
 }
 
 hr{
@@ -186,7 +186,7 @@ hr{
 .comments {
   margin: 1% 1% 1% 7%;
   background-color: inherit;
-  font-size: .75em;
+  font-size: 1em;
   width: 69%;
 }
 
@@ -265,7 +265,7 @@ hr{
   background-color: white;
   padding: 1%;
   border-left: 7px solid rgb(0,220,130);
-  font-size: 1.1em;
+  font-size: 0.9em;
 }
 
 .comment_points{
