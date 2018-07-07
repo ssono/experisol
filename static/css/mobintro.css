@@ -27,7 +27,7 @@ hr {
 
 
 #top {
-  background-color: rgb(80,204,127);
+  background-color: rgb(0,220,130);
   padding: 5%;
   margin: 0px;
   text-align: center;
@@ -57,18 +57,18 @@ hr {
 .lower{
   width: 100%;
   float: center;
-  border-bottom: 5px solid rgb(80, 204, 127);
+  border-bottom: 5px solid rgb(0,220,130);
 }
 
 .how {
   padding: 2%;
-  background-color: rgb(230, 240, 250);
+  background-color: rgb(220, 240, 245);
   display: flex;
 }
 
 .help {
   padding: 2%;
-  background-color: rgb(190, 210, 220);
+  background-color: rgb(180, 210, 225);
   display: flex;
 }
 
@@ -80,12 +80,12 @@ hr {
 
 #enter{
   margin: 5%;
-  border: 3px solid rgb(80, 204, 127);
+  border: 3px solid rgb(0,220,130);
   text-decoration: none;
   font-family: 'Poiret One',cursive;
   font-weight: bold;
   padding: 2% 5%;
-  color: rgb(80, 204, 127);
+  color: rgb(0,220,130);
   background-color: rgb(5, 55, 75);
   font-size: 2.5em;
 }
