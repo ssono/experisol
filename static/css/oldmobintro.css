@@ -1,0 +1,101 @@
+
+h1 {
+  font-family: 'Poiret One';
+  font-size: 1em;
+  width: 100%;
+  font-weight: bold;
+}
+
+body {
+  margin-top: 0px;
+  margin-left: 0px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+  font-family: 'Raleway';
+}
+
+hr {
+  margin-left:auto;
+  margin-right: auto;
+  margin-top: 0;
+  margin-bottom: 0;
+  width: 50%;
+  display: block;
+  border-top: 1px solid rgb(22,49,72);
+}
+
+
+
+#top {
+  background-color: rgb(0,220,130);
+  padding: 5%;
+  margin: 0px;
+  text-align: center;
+  font-size: 4em;
+
+}
+
+.titles{
+  -webkit-margin-before: 0.5em;
+  margin-bottom: 0;
+  font-size: 1.5em;
+  text-align: center;
+  float: center;
+}
+
+.what {
+  padding: 2%;
+  background-color: white;
+  display: flex;
+}
+
+.upper{
+  width: 100%;
+  font-size: 1.5em;
+}
+
+.lower{
+  width: 100%;
+  float: center;
+  border-bottom: 5px solid rgb(0,220,130);
+}
+
+.how {
+  padding: 2%;
+  background-color: rgb(220, 240, 245);
+  display: flex;
+}
+
+.help {
+  padding: 2%;
+  background-color: rgb(180, 210, 225);
+  display: flex;
+}
+
+#enter_container{
+  text-align: center;
+  float: center;
+  background-color: rgb(5, 55, 75);
+}
+
+#enter{
+  margin: 5%;
+  border: 3px solid rgb(0,220,130);
+  text-decoration: none;
+  font-family: 'Poiret One',cursive;
+  font-weight: bold;
+  padding: 2% 5%;
+  color: rgb(0,220,130);
+  background-color: rgb(5, 55, 75);
+  font-size: 2.5em;
+}
+
+#credits{
+  background-color: rgb(5, 55, 75);
+  color: #999;
+  margin: 0px;
+}
+
+.cred{
+  margin: 0px;
+}

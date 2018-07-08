@@ -12,6 +12,32 @@ from django.conf import settings
 
 
 #Stats views
+
+###############################################################################
+
+def intro(request):
+    if not request.user.is_staff:
+        ensureTotalStats()
+        ipCheck(request)
+    html = 'intro.html'
+    if request.user_agent.is_mobile:
+        html = 'mobintro.html'
+    return render(request, html, {})
+
+
+def post(request, proj_pk,  mod_pk):
+    if not request.user.is_staff:
+        ensureTotalStats()
+        ipCheck(request)
+    proj = Project.objects.get(pk=proj_pk)
+    modules = proj.modules.all()
+    current_module = Module.objects.get(pk=mod_pk)
+    authors = ", ".join([p.user.username for p in proj.authors.all()])
+    html = 'solve.html'
+    if request.user_agent.is_mobile:
+        html = 'mobsolve.html'
+    return render(request, html, {'modules': modules, 'sections': current_module.sections.all(), 'comments': current_module.comments.all(), 'current_module': current_module, 'project': proj, 'authors': authors})
+
 def email(request):
     if request.method == 'GET':
         html = 'email.html'
@@ -35,84 +61,8 @@ def email(request):
     else:
         return HttpResponse("How did you get here?")
 
+#############################################################################
 
-def newUser(ipHash):
-    tstats = TotalStats.objects.all()[0]
-    user = SessionStats(ipHash=ipHash, lastAction=datetime.now(timezone.utc), totalstats=tstats)
-    user.save()
-    tstats.uniqueUsers += 1
-    tstats.save()
-    return
-
-def ensureTotalStats():
-    numObjects = len(TotalStats.objects.all())
-    if numObjects != 1:
-        if numObjects > 1:
-            TotalStats.objects.all().delete()
-        newTS = TotalStats()
-        newTS.save()
-
-def ipCheck(request):
-    ip = get_client_ip(request)
-    if ip != None:
-        ipHash = hash(ip)
-        logUserInteraction(ipHash)
-
-def logUserInteraction(ipHash):
-    tstats = TotalStats.objects.all()[0]
-    try:
-        user = SessionStats.objects.get(ipHash=ipHash)
-    except ObjectDoesNotExist:
-        newUser(ipHash)
-        return
-    #update lastaction and timespent of less than 30 min between actions
-    #update totaltime and avg user time
-    now = datetime.now(timezone.utc)
-    tdiff = now - user.lastAction
-    if tdiff.total_seconds() < 1800:
-        user.timeSpent += tdiff
-        tstats.totalTime += tdiff
-        tstats.save()
-        tstats.avgTime = newAvgTime()
-    user.lastAction = now
-    user.save()
-
-
-def newAvgTime():
-    tstats = TotalStats.objects.all()[0]
-    timeInSec = int(tstats.totalTime.total_seconds())
-    if tstats.uniqueUsers > 1:
-        avgTime = timeInSec // tstats.uniqueUsers
-        avgTime = timedelta(seconds=avgTime)
-        tstats.avgTime = avgTime
-    else:
-        tstats.avgTime = tstats.totalTime
-    tstats.save()
-
-
-# Create your views here.
-def intro(request):
-    if not request.user.is_staff:
-        ensureTotalStats()
-        ipCheck(request)
-    html = 'intro.html'
-    if request.user_agent.is_mobile:
-        html = 'mobintro.html'
-    return render(request, html, {})
-
-
-def post(request, proj_pk,  mod_pk):
-    if not request.user.is_staff:
-        ensureTotalStats()
-        ipCheck(request)
-    proj = Project.objects.get(pk=proj_pk)
-    modules = proj.modules.all()
-    current_module = Module.objects.get(pk=mod_pk)
-    authors = ", ".join([p.user.username for p in proj.authors.all()])
-    html = 'solve.html'
-    if request.user_agent.is_mobile:
-        html = 'mobsolve.html'
-    return render(request, html, {'modules': modules, 'sections': current_module.sections.all(), 'comments': current_module.comments.all(), 'current_module': current_module, 'project': proj, 'authors': authors})
 
 def next_mod(request, proj_pk, mod_pk):
     if not request.user.is_staff:
@@ -236,6 +186,7 @@ def create_reply(request):
         return render(request, 'solve.html', {})
     return HttpResponse("Weird")
 
+##############################################################################
 
 def addVote(request):
     ip = get_client_ip(request)
@@ -257,4 +208,57 @@ def addComment(request):
         user.save()
     tstats = TotalStats.objects.all()[0]
     tstats.totalComments += 1
+    tstats.save()
+
+def newUser(ipHash):
+    tstats = TotalStats.objects.all()[0]
+    user = SessionStats(ipHash=ipHash, lastAction=datetime.now(timezone.utc), totalstats=tstats)
+    user.save()
+    tstats.uniqueUsers += 1
+    tstats.save()
+    return
+
+def ensureTotalStats():
+    numObjects = len(TotalStats.objects.all())
+    if numObjects != 1:
+        if numObjects > 1:
+            TotalStats.objects.all().delete()
+        newTS = TotalStats()
+        newTS.save()
+
+def ipCheck(request):
+    ip = get_client_ip(request)
+    if ip != None:
+        ipHash = hash(ip)
+        logUserInteraction(ipHash)
+
+def logUserInteraction(ipHash):
+    tstats = TotalStats.objects.all()[0]
+    try:
+        user = SessionStats.objects.get(ipHash=ipHash)
+    except ObjectDoesNotExist:
+        newUser(ipHash)
+        return
+    #update lastaction and timespent of less than 30 min between actions
+    #update totaltime and avg user time
+    now = datetime.now(timezone.utc)
+    tdiff = now - user.lastAction
+    if tdiff.total_seconds() < 1800:
+        user.timeSpent += tdiff
+        tstats.totalTime += tdiff
+        tstats.save()
+        tstats.avgTime = newAvgTime()
+    user.lastAction = now
+    user.save()
+
+
+def newAvgTime():
+    tstats = TotalStats.objects.all()[0]
+    timeInSec = int(tstats.totalTime.total_seconds())
+    if tstats.uniqueUsers > 1:
+        avgTime = timeInSec // tstats.uniqueUsers
+        avgTime = timedelta(seconds=avgTime)
+        tstats.avgTime = avgTime
+    else:
+        tstats.avgTime = tstats.totalTime
     tstats.save()
