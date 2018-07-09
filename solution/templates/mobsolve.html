@@ -70,7 +70,7 @@
     <div class="comments">
 
       <form method="POST" action="/{{ project.pk }}/{{ current_module.pk }}/" id="comment_form" module="{{ current_module.pk }}">
-        <textarea name="new_comment" id="comment_area" placeholder="What you got?"></textarea>
+        <textarea name="new_comment" id="comment_area" placeholder="What do you want to say??"></textarea>
         <input type="submit" value="Comment" id="comment_submit">
         {% csrf_token %}
       </form>
@@ -102,7 +102,7 @@
 
         <div class="reply_toggle hiding" id="reply_{{ comment.pk }}">
           <form method="POST" action="/{{ project.pk }}/{{ current_module.pk }}/" class="reply_form" com_par="{{ comment.pk }}">
-            <textarea name="new_reply" class="reply_area" id="reply_area{{ comment.pk }}" placeholder="What you got?"></textarea>
+            <textarea name="new_reply" class="reply_area" id="reply_area{{ comment.pk }}" placeholder="What do you want to say?"></textarea>
             <input type="submit" value="Reply" class="reply_submit">
             {% csrf_token %}
           </form>
