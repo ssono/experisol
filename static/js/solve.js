@@ -158,6 +158,12 @@ $(document).ajaxStop(function() {
       $(this).css("color", "rgb(80, 204, 127)");
     });
 
+    $(".post_up, .post_fav").hover(function(){
+        $(this).css("color", "rgb(210, 230, 230)");
+      }, function(){
+        $(this).css("color", "rgb(80, 204, 127)");
+    });
+
   });
 
   $(".post_up, .post_fav").hover(function(){
@@ -259,6 +265,11 @@ function get_next_mod(id){
         $("#section_wrap").load(mod_url + " .sections");
         $("#auth_title").load(mod_url + " .change_mod");
         $("#ppoints").load(mod_url + " #ppoints");
+        if(String(proj_id) != String(data['proj_pk'])){
+          console.log(proj_id);
+          console.log(proj);
+          $("#upvote_load").load(mod_url + " #upvote_load");
+        }
         history.pushState(null,null, mod_url);
       }
     }
@@ -278,6 +289,10 @@ function get_prev_mod(id){
       $("#section_wrap").load(mod_url + " .sections");
       $("#auth_title").load(mod_url + " .change_mod");
       $("#ppoints").load(mod_url + " #ppoints");
+      if(String(proj_id) != String(data['proj_pk'])){
+        $("#upvote_load").load(mod_url + " #upvote_load");
+      }
+
       history.pushState(null,null, mod_url);
     }
   });
