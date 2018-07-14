@@ -21,6 +21,7 @@ h1{
   font-size: 3em;
   font-family: 'Poiret One', sans-serif;
   font-weight: normal;
+  letter-spacing: 5px;
 }
 
 .extra {
@@ -115,7 +116,7 @@ h1{
   border: 1px solid rgb(0,50,80);
   border-radius: 50px;
   text-decoration: none;
-  font-family: 'Poiret One',cursive;
+  font-family: 'Raleway', sans-serif;
   font-weight: bold;
   padding: 0.5%;
   color: rgb(0,50,80);
@@ -129,7 +130,7 @@ h1{
   border: 1px solid rgb(0,220,130);
   border-radius: 50px;
   text-decoration: none;
-  font-family: 'Poiret One',cursive;
+  font-family: 'Raleway', sans-serif;
   font-weight: bold;
   padding: 0.5%;
   color: rgb(0,220,130);

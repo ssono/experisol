@@ -21,6 +21,7 @@ h1{
   font-size: 5em;
   font-family: 'Poiret One', sans-serif;
   font-weight: normal;
+  letter-spacing: 5px;
 }
 
 #contact {
@@ -79,7 +80,7 @@ h1{
   border: 3px solid rgb(0,50,80);
   border-radius: 50px;
   text-decoration: none;
-  font-family: 'Poiret One',cursive;
+  font-family: 'Raleway',sans-serif;
   font-weight: bold;
   padding: 0.5% 4%;
   color: rgb(0,50,80);
@@ -93,7 +94,7 @@ h1{
   border: 3px solid rgb(0,220,130);
   border-radius: 50px;
   text-decoration: none;
-  font-family: 'Poiret One',cursive;
+  font-family: 'Raleway',sans-serif;
   font-weight: bold;
   padding: 0.5% 4%;
   color: rgb(0,220,130);
@@ -143,39 +144,6 @@ h1{
 .description{
   font-size: 1.5em;
 }
-/*
-.proj_descript{
-  font-size: 1.5em;
-  width: 90%;
-}
-
-.proj_link{
-  font-size: 1.1em
-}
-
-.proj_head{
-  margin-top: 5%;
-}
-
-#education{
-
-}
-
-#edupic{
-  width: 50%;
-  display: inline-block;
-}
-
-#eduwords{
-  width: 50%;
-  display: inline-block;
-  padding: 0% 5% 0% 5%;
-}
-
-img{
-  max-width: 100%;
-  height:auto;
-} */
 
 #demo{
   width:100%;
