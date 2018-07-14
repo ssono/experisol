@@ -9,6 +9,7 @@ body {
 p {
   margin: 1% 2% !important;
   font-size: 1em;
+  line-height: 175%;
 }
 
 hr{
@@ -33,6 +34,7 @@ hr{
   margin: 1% 1% 1% 1%;
   font-size: 3em;
   font-family: 'Poiret One', sans-serif;
+  letter-spacing: 5px;
 }
 
 #contact {

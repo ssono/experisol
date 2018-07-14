@@ -1,7 +1,6 @@
 body {
   margin: 0%;
   background-color: rgb(220,240,245) !important;
-  /* background-color: rgb(210,230,230) !important; */
   font-family: 'Raleway', sans-serif;
 }
 
@@ -9,6 +8,7 @@ body {
 p {
   margin: 1% 2% !important;
   font-size: 1.3em;
+  line-height: 175%;
 }
 
 hr{
@@ -33,6 +33,7 @@ hr{
   margin: 1% 1% 1% 1%;
   font-size: 5em;
   font-family: 'Poiret One', sans-serif;
+  letter-spacing: 5px;
 }
 
 #contact {
